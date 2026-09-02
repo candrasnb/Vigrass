@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akademi Cerdas Si Kecil - Visual & Interaktif</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Fredoka', cursive, sans-serif; }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(1deg); }
+        }
+        @keyframes popIn {
+            0% { transform: scale(0.85); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-float { animation: floatSlow 4s ease-in-out infinite; }
+        .animate-pop { animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+    </style>
+</head>
+<body class="bg-gradient-to-tr from-violet-900 via-indigo-800 to-blue-900 min-h-screen flex items-center justify-center p-4 text-slate-800 relative overflow-x-hidden">
+
+    <!-- Background Glow -->
+    <div class="absolute top-10 left-10 w-32 h-32 bg-pink-500/30 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-10 right-10 w-40 h-40 bg-cyan-400/30 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="bg-white/95 backdrop-blur-2xl rounded-[2.5rem] shadow-2xl p-5 md:p-8 w-full max-w-lg border-4 border-white/60 animate-pop relative z-10">
+        
+        <!-- Header -->
+        <div class="text-center mb-4">
+            <div class="inline-block bg-gradient-to-r from-amber-400 to-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2 shadow-sm animate-float">
+                ✨ Akademi Cerdas Si Kecil ✨
+            </div>
+            <h1 class="text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
+                Belajar Seru & Bergambar
+            </h1>
+            <p class="text-slate-500 text-sm mt-1">Pilih kategori latihan dan kumpulkan bintangmu!</p>
+        </div>
+
+        <!-- Setup Screen -->
+        <div id="setup-screen" class="space-y-2.5 max-h-[72vh] overflow-y-auto pr-1">
+            <div class="bg-indigo-50 p-3 rounded-2xl border-2 border-indigo-100 text-center shadow-inner">
+                <p class="text-indigo-900 font-bold text-sm">Pilih kategori latihan:</p>
+            </div>
+            <div class="grid grid-cols-1 gap-2.5">
+                <button onclick="startQuiz('semua')" class="w-full bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white font-bold py-3 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
+                    <span>🌟 Semua Materi (Campuran)</span>
+                    <span class="text-xs bg-white/25 px-2.5 py-1 rounded-xl">20 Soal</span>
+                </button>
+                <button onclick="startQuiz('angka')" class="w-full bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold py-3 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
+                    <span>🔢 Pengenalan Angka 1–20</span>
+                    <span class="text-xs bg-white/25 px-2.5 py-1 rounded-xl">Visual</span>
+                </button>
+                <button onclick="startQuiz('hitung')" class="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold py-3 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
+                    <span>➕ Penjumlahan & Pengurangan</span>
+                    <span class="text-xs bg-white/25 px-2.5 py-1 rounded-xl">Visual</span>
+                </button>
+                <button onclick="startQuiz('bentuk')" class="w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold py-3 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
+                    <span>🎨 Mengenal Bentuk & Warna</span>
+                    <span class="text-xs bg-white/25 px-2.5 py-1 rounded-xl">Visual</span>
+                </button>
+                <button onclick="startQuiz('pola')" class="w-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold py-3 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
+                    <span>🧩 Pola Urutan (Pattern)</span>
+                    <span class="text-xs bg-white/25 px-2.5 py-1 rounded-xl">Visual</span>
+                </button>
+                <button onclick="startQuiz('konsep')" class="w-full bg-gradient-to-r from-indigo-500 to-violet-600 text-white font-bold py-3 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
+                    <span>🐘 Besar/Kecil & Panjang/Pendek</span>
+                    <span class="text-xs bg-white/25 px-2.5 py-1 rounded-xl">Visual</span>
+                </button>
+                <button onclick="startQuiz('mewarnai')" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold py-3 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
+                    <span>🎨 Materi Mewarnai & Seni</span>
+                    <span class="text-xs bg-white/25 px-2.5 py-1 rounded-xl">Visual</span>
+                </button>
+                <button onclick="startQuiz('hewan')" class="w-full bg-gradient-to-r from-yellow-600 to-amber-600 text-white font-bold py-3 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
+                    <span>🦁 Mengenal Hewan</span>
+                    <span class="text-xs bg-white/25 px-2.5 py-1 rounded-xl">Bergambar</span>
+                </button>
+                <button onclick="startQuiz('tumbuhan')" class="w-full bg-gradient-to-r from-green-600 to-emerald-700 text-white font-bold py-3 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
+                    <span>🌱 Mengenal Tumbuhan</span>
+                    <span class="text-xs bg-white/25 px-2.5 py-1 rounded-xl">Bergambar</span>
+                </button>
+                <button onclick="startQuiz('inggris')" class="w-full bg-gradient-to-r from-blue-600 to-sky-600 text-white font-bold py-3 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
+                    <span>🔤 Belajar Bahasa Inggris</span>
+                    <span class="text-xs bg-white/25 px-2.5 py-1 rounded-xl">Bergambar</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="hidden relative z-10 animate-pop">
+            <div class="flex justify-between items-center mb-3 text-sm font-bold text-slate-500">
+                <span id="question-progress" class="bg-slate-100 px-3.5 py-1 rounded-full shadow-sm">Soal 1 dari 10</span>
+                <span id="score-tracker" class="bg-amber-100 text-amber-800 px-3.5 py-1 rounded-full shadow-sm">🏆 Skor: 0</span>
+            </div>
+
+            <!-- Card Soal dengan Gambar / Ilustrasi Emoji Besar -->
+            <div id="question-card" class="bg-gradient-to-br from-indigo-50/90 to-purple-50/90 p-4 rounded-3xl border-2 border-indigo-200 mb-4 flex flex-col items-center justify-center text-center shadow-inner min-h-[130px]">
+                <div id="question-image" class="text-4xl md:text-5xl mb-2 animate-float"></div>
+                <h2 id="question-text" class="text-base md:text-lg font-bold text-slate-800 leading-snug">Pertanyaan...</h2>
+            </div>
+
+            <!-- Pilihan Ganda -->
+            <div id="options-container" class="grid grid-cols-1 gap-3 mb-4"></div>
+
+            <div id="feedback-container" class="hidden mb-3 p-3 rounded-2xl text-center font-bold text-sm md:text-base shadow-md animate-pop"></div>
+
+            <button id="next-btn" onclick="nextQuestion()" class="hidden w-full bg-gradient-to-r from-indigo-600 to-violet-600 hover:opacity-90 text-white font-bold py-4 rounded-2xl shadow-lg text-base transition transform hover:scale-[1.01] active:scale-95">
+                Soal Berikutnya ➡️
+            </button>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="hidden text-center space-y-4 relative z-10 animate-pop py-6">
+            <div class="text-7xl mb-2 animate-float">🎉</div>
+            <h2 class="text-3xl font-extrabold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Luar Biasa Hebat!</h2>
+            <p id="final-score-text" class="text-slate-600 text-base md:text-lg font-semibold">Kamu hebat sudah menyelesaikan sesi latihan ini.</p>
+            <div>
+                <button onclick="resetQuiz()" class="w-full bg-gradient-to-r from-indigo-600 to-violet-600 hover:opacity-90 text-white font-bold py-4 rounded-2xl shadow-xl text-base transition transform hover:scale-105 active:scale-95">
+                    🔄 Pilih Latihan Lain
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let currentQuestions = [];
+        let currentIndex = 0;
+        let score = 0;
+        let totalQuestionsCount = 10;
+
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function shuffleArray(array) {
+            return array.sort(() => Math.random() - 0.5);
+        }
+
+        // --- DATABASE SOAL DENGAN GAMBAR ILUSTRASI (EMOJI HD) ---
+        function getAngkaBank() {
+            let list = [];
+            let icons = ['⭐', '🍎', '🚗', '🎈', '🐶', '⚽', '🐱', '🍌', '🌸', '🍭'];
+            for (let i = 1; i <= 20; i++) {
+                let icon = icons[i % icons.length];
+                let stringBenda = Array(i).fill(icon).join(' ');
+                let w1 = i === 20 ? 18 : i + 1;
+                let w2 = Math.max(1, i - 1);
+                list.push({ img: stringBenda, text: `Berapa jumlah benda di atas?`, opts: [i.toString(), w1.toString(), w2.toString()], corr: 0 });
+            }
+            for (let i = 2; i <= 19; i++) {
+                list.push({ img: `🔢`, text: `Angka berapa yang terletak tepat SESUDAH angka ${i}?`, opts: [(i+1).toString(), i.toString(), (i-1).toString()], corr: 0 });
+                list.push({ img: `🔢`, text: `Angka berapa yang terletak tepat SEBELUM angka ${i}?`, opts: [(i-1).toString(), (i+1).toString(), (i+2).toString()], corr: 0 });
+            }
+            return list;
+        }
+
+        function getHitungBank() {
+            let list = [];
+            for (let a = 1; a <= 10; a++) {
+                for (let b = 1; b <= 10; b++) {
+                    let hasil = a + b;
+                    let w1 = hasil + 1, w2 = Math.max(0, hasil - 2);
+                    list.push({ img: `➕`, text: `Berapa hasil dari ${a} ditambah ${b}?`, opts: [hasil.toString(), w1.toString(), w2.toString()], corr: 0 });
+                }
+            }
+            for (let a = 5; a <= 20; a++) {
+                for (let b = 1; b <= a - 1; b++) {
+                    let hasil = a - b;
+                    let w1 = hasil + 2, w2 = Math.max(0, hasil - 1);
+                    list.push({ img: `➖`, text: `Berapa hasil dari ${a} dikurangi ${b}?`, opts: [hasil.toString(), w1.toString(), w2.toString()], corr: 0 });
+                }
+            }
+            return list;
+        }
+
+        function getBentukBank() {
+            return [
+                { img: "🔵", text: "Roda sepeda, kelereng, dan uang logam memiliki bentuk dasar...", opts: ["Lingkaran", "Segitiga", "Persegi"], corr: 0 },
+                { img: "📖", text: "Buku tulis dan papan tulis di kelas biasanya berbentuk...", opts: ["Persegi Panjang", "Lingkaran", "Tabung"], corr: 0 },
+                { img: "⛺", text: "Atap rumah tradisional atau tenda perkemahan umumnya menyerupai bentuk...", opts: ["Segitiga", "Kotak", "Lingkaran"], corr: 0 },
+                { img: "🍃", text: "Warna daun yang masih segar dan sehat di pohon adalah...", opts: ["Hijau", "Merah", "Ungu"], corr: 0 },
+                { img: "🍌", text: "Warna buah pisang yang sudah matang dan siap dimakan adalah...", opts: ["Kuning", "Hitam", "Biru"], corr: 0 },
+                { img: "🍓", text: "Warna darah manusia atau buah stroberi umumnya adalah...", opts: ["Merah", "Hijau", "Kuning"], corr: 0 },
+                { img: "🎁", text: "Benda berbentuk kubus atau kotak dalam kehidupan sehari-hari contohnya adalah...", opts: ["Kotak kado / Dadu", "Bola pimpong", "Piring makan"], corr: 0 },
+                { img: "☁️", text: "Warna langit pada siang hari yang cerah adalah...", opts: ["Biru", "Merah", "Hitam"], corr: 0 }
+            ];
+        }
+
+        function getPolaBank() {
+            return [
+                { img: "🔴 🟦 🔴 🟦", text: "Lanjutkan pola bentuk di atas:", opts: ["🔴", "🟦", "🟢"], corr: 1 },
+                { img: "⭐ 🌙 ⭐ 🌙", text: "Lanjutkan pola bentuk di atas:", opts: ["🌙", "⭐", "☀️"], corr: 0 },
+                { img: "2️⃣ 4️⃣ 6️⃣ 8️⃣", text: "Lanjutkan pola angka loncat dua di atas:", opts: ["10", "9", "12"], corr: 0 },
+                { img: "1️⃣ 3️⃣ 5️⃣ 7️⃣", text: "Lanjutkan pola angka di atas:", opts: ["9", "8", "10"], corr: 0 },
+                { img: "🐱 🐶 🐱 🐶", text: "Lanjutkan pola hewan di atas:", opts: ["🐱", "🐶", "🐰"], corr: 1 },
+                { img: "🍎 🍌 🍎 🍌", text: "Lanjutkan pola buah di atas:", opts: ["🍌", "🍎", "🍇"], corr: 0 }
+            ];
+        }
+
+        function getKonsepBank() {
+            return [
+                { img: "🐘", text: "Di antara hewan berikut, manakah yang ukurannya PALING BESAR?", opts: ["Gajah", "Kucing", "Semut"], corr: 0 },
+                { img: "🍇", text: "Di antara buah berikut, manakah yang ukurannya PALING KECIL?", opts: ["Buah Anggur", "Semangka", "Melon"], corr: 0 },
+                { img: "📏", text: "Manakah benda yang ukurannya PALING PANJANG?", opts: ["Penggaris panjang", "Penghapus karet", "Koin logam"], corr: 0 },
+                { img: "✏️", text: "Manakah pensil yang ukurannya PALING PENDEK?", opts: ["Pensil sisa hampir habis", "Pensil baru utuh", "Setengah pakai"], corr: 0 },
+                { img: "🥭", text: "Di keranjang A ada 20 mangga, di keranjang B ada 2 mangga. Mana yang PALING BANYAK?", opts: ["Keranjang A", "Keranjang B", "Sama saja"], corr: 0 },
+                { img: "🚂", text: "Manakah kendaraan darat yang ukurannya PALING PANJANG?", opts: ["Kereta api", "Sepeda motor", "Mobil sedan"], corr: 0 }
+            ];
+        }
+
+        function getMewarnaiBank() {
+            return [
+                { img: "🎨", text: "Warna merah dicampur warna kuning akan menghasilkan warna...", opts: ["Oranye / Jingga", "Hijau", "Ungu"], corr: 0 },
+                { img: "🎨", text: "Warna biru dicampur warna kuning akan menghasilkan warna...", opts: ["Hijau", "Merah", "Pink"], corr: 0 },
+                { img: "🎨", text: "Manakah yang termasuk kelompok warna primer (dasar)?", opts: ["Merah, Kuning, Biru", "Hijau, Ungu, Oranye", "Hitam, Putih, Abu"], corr: 0 },
+                { img: "🪵", text: "Untuk mewarnai batang pohon, biasanya anak-anak menggunakan warna...", opts: ["Cokelat", "Biru muda", "Merah muda"], corr: 0 },
+                { img: "☁️", text: "Warna apa yang cocok untuk mewarnai awan bersih di langit?", opts: ["Putih / Biru muda", "Hitam pekat", "Merah menyala"], corr: 0 },
+                { img: "🍇", text: "Warna biru dicampur warna merah akan menghasilkan warna...", opts: ["Ungu", "Hijau", "Kuning"], corr: 0 }
+            ];
+        }
+
+        function getHewanBank() {
+            return [
+                { img: "🐠", text: "Hewan apa yang hidup di air dan bernapas dengan insang?", opts: ["Ikan", "Kucing", "Burung"], corr: 0 },
+                { img: "🦅", text: "Hewan manakah yang bisa terbang di udara dengan bebas?", opts: ["Burung", "Sapi", "Kuda"], corr: 0 },
+                { img: "🐱", text: "Suara hewan 'Meow... Meow...' adalah suara dari...", opts: ["Kucing", "Anjing", "Bebek"], corr: 0 },
+                { img: "🦒", text: "Hewan berleher panjang yang suka makan daun pohon tinggi adalah...", opts: ["Jerapah", "Kelinci", "Tikus"], corr: 0 },
+                { img: "🐄", text: "Hewan pemakan rumput yang menghasilkan susu segar untuk kita adalah...", opts: ["Sapi", "Singa", "Harimau"], corr: 0 },
+                { img: "🐰", text: "Hewan apa yang suka melompat-lompat dan sangat suka makan wortel?", opts: ["Kelinci", "Kucing", "Ayam"], corr: 0 },
+                { img: "🦁", text: "Raja hutan yang memiliki bulu lebat di sekitar kepalanya adalah...", opts: ["Singa", "Kambing", "Bebek"], corr: 0 }
+            ];
+        }
+
+        function getTumbuhanBank() {
+            return [
+                { img: "🌱", text: "Bagian tumbuhan yang berada di dalam tanah dan menyerap air adalah...", opts: ["Akar", "Daun", "Bunga"], corr: 0 },
+                { img: "🌿", text: "Bagian tumbuhan yang umumnya berwarna hijau dan berfungsi memasak makanan adalah...", opts: ["Daun", "Akar", "Batang"], corr: 0 },
+                { img: "🌺", text: "Bunga nasional Indonesia yang berukuran sangat besar berwarna merah putih adalah...", opts: ["Rafflesia / Melati", "Kaktus gurun", "Rumput liar"], corr: 0 },
+                { img: "🪵", text: "Pohon besar yang rindang biasanya memiliki bagian penyangga tegak yang keras disebut...", opts: ["Batang", "Kelopak", "Biji"], corr: 0 },
+                { img: "🌸", text: "Sebelum menjadi buah yang manis dan lezat, biasanya tumbuhan akan mengeluarkan...", opts: ["Bunga", "Durian", "Tanah"], corr: 0 }
+            ];
+        }
+
+        function getInggrisBank() {
+            return [
+                { img: "🔴", text: "Apa bahasa Inggris dari warna 'Merah'?", opts: ["Red", "Blue", "Green"], corr: 0 },
+                { img: "🔟", text: "Apa bahasa Inggris dari angka 'Sepuluh'?", opts: ["Ten", "Five", "One"], corr: 0 },
+                { img: "🐈", text: "Hewan 'Cat' dalam bahasa Indonesia artinya adalah...", opts: ["Kucing", "Anjing", "Kelinci"], corr: 0 },
+                { img: "🍎", text: "Buah 'Apple' dalam bahasa Indonesia adalah...", opts: ["Apel", "Pisang", "Jeruk"], corr: 0 },
+                { img: "🟡", text: "Apa bahasa Inggris dari 'Kuning'?", opts: ["Yellow", "Red", "Black"], corr: 0 },
+                { img: "🌅", text: "Ucapan 'Good Morning' artinya adalah...", opts: ["Selamat Pagi", "Selamat Malam", "Sampai Jumpa"], corr: 0 }
+            ];
+        }
+
+        function startQuiz(category) {
+            let pool = [];
+            if (category === 'angka') pool = getAngkaBank();
+            else if (category === 'hitung') pool = getHitungBank();
+            else if (category === 'bentuk') pool = getBentukBank();
+            else if (category === 'pola') pool = getPolaBank();
+            else if (category === 'konsep') pool = getKonsepBank();
+            else if (category === 'mewarnai') pool = getMewarnaiBank();
+            else if (category === 'hewan') pool = getHewanBank();
+            else if (category === 'tumbuhan') pool = getTumbuhanBank();
+            else if (category === 'inggris') pool = getInggrisBank();
+            else if (category === 'semua') {
+                pool = [
+                    ...getAngkaBank(), ...getHitungBank(), ...getBentukBank(), 
+                    ...getPolaBank(), ...getKonsepBank(), ...getMewarnaiBank(), 
+                    ...getHewanBank(), ...getTumbuhanBank(), ...getInggrisBank()
+                ];
+            }
+
+            totalQuestionsCount = (category === 'semua') ? 20 : 10;
+            currentQuestions = shuffleArray([...pool]).slice(0, totalQuestionsCount);
+
+            currentIndex = 0;
+            score = 0;
+
+            document.getElementById('setup-screen').classList.add('hidden');
+            document.getElementById('result-screen').classList.add('hidden');
+            document.getElementById('quiz-screen').classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const q = currentQuestions[currentIndex];
+            document.getElementById('question-progress').innerText = `Soal ${currentIndex + 1} dari ${totalQuestionsCount}`;
+            document.getElementById('score-tracker').innerText = `🏆 Skor: ${score}`;
+            
+            // Masukkan Gambar / Ilustrasi Emoji HD & Teks Soal
+            document.getElementById('question-image').innerText = q.img;
+            document.getElementById('question-text').innerText = q.text;
+
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+            
+            document.getElementById('feedback-container').classList.add('hidden');
+            document.getElementById('next-btn').classList.add('hidden');
+
+            let shuffledOptsWithIndex = q.opts.map((opt, idx) => ({ text: opt, isCorrect: idx === q.corr }));
+            shuffledOptsWithIndex = shuffleArray(shuffledOptsWithIndex);
+
+            shuffledOptsWithIndex.forEach((item, index) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left bg-white/90 hover:bg-white border-2 border-indigo-100 hover:border-indigo-400 font-bold py-3.5 px-4 rounded-2xl shadow-sm transition-all transform hover:scale-[1.01] active:scale-95 text-slate-700 flex items-center gap-3.5 text-base md:text-lg";
+                btn.innerHTML = `<span class="w-8 h-8 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center text-sm font-extrabold shadow-sm">${String.fromCharCode(65 + index)}</span> <span>${item.text}</span>`;
+                btn.onclick = () => selectOption(item.isCorrect, index, shuffledOptsWithIndex);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function selectOption(isCorrect, selectedIndex, optionsList) {
+            const options = document.getElementById('options-container').children;
+            const feedback = document.getElementById('feedback-container');
+            
+            for (let i = 0; i < options.length; i++) {
+                options[i].disabled = true;
+                if (optionsList[i].isCorrect) {
+                    options[i].classList.remove('bg-white/90', 'border-indigo-100');
+                    options[i].classList.add('bg-emerald-100', 'border-emerald-500', 'text-emerald-900', 'shadow-md');
+                } else if (i === selectedIndex && !isCorrect) {
+                    options[i].classList.remove('bg-white/90', 'border-indigo-100');
+                    options[i].classList.add('bg-rose-100', 'border-rose-500', 'text-rose-900');
+                }
+            }
+
+            const pointsPerQuestion = Math.round(100 / totalQuestionsCount);
+            if (isCorrect) {
+                score += pointsPerQuestion;
+                feedback.className = "mb-3 p-3 rounded-2xl text-center font-bold text-base bg-emerald-100 text-emerald-800 border-2 border-emerald-200 animate-pop";
+                feedback.innerText = "🌟 Pintar Sekali! Jawabanmu Benar! 🎉";
+            } else {
+                feedback.className = "mb-3 p-3 rounded-2xl text-center font-bold text-base bg-rose-100 text-rose-800 border-2 border-rose-200 animate-pop";
+                feedback.innerText = "💪 Belum Tepat, Yuk Coba Lagi di Soal Berikutnya!";
+            }
+
+            feedback.classList.remove('hidden');
+            document.getElementById('score-tracker').innerText = `🏆 Skor: ${score}`;
+            document.getElementById('next-btn').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentIndex++;
+            if (currentIndex < currentQuestions.length) {
+                loadQuestion();
+            } else {
+                document.getElementById('quiz-screen').classList.add('hidden');
+                document.getElementById('result-screen').classList.remove('hidden');
+                document.getElementById('final-score-text').innerText = `Hebat! Total skor akhirmu adalah ${score} dari 100. Semangat belajarnya ya!`;
+            }
+        }
+
+        function resetQuiz() {
+            document.getElementById('result-screen').classList.add('hidden');
+            document.getElementById('quiz-screen').classList.add('hidden');
+            document.getElementById('setup-screen').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
