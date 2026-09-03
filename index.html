@@ -192,6 +192,7 @@
             return arr;
         }
 
+        // Fungsi penyaring mutlak agar tidak ada soal duplikat dalam satu sesi
         function getUniqueQuestions(pool, count) {
             let uniqueMap = new Map();
             for (let item of pool) {
@@ -204,13 +205,12 @@
             return shuffled.slice(0, count);
         }
 
-        // --- GENERATOR 1000+ BANK SOAL OTOMATIS ---
+        // --- BANK SOAL BERSIH, UNIK, DAN MELIMPAH ---
 
         function getHitungBank() {
             let list = [];
             let cleanNumbers = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000];
             
-            // Penjumlahan Angka Rapi (Ratusan Kombinasi)
             for (let a of cleanNumbers) {
                 for (let b of cleanNumbers) {
                     let hasil = a + b;
@@ -220,7 +220,6 @@
                 }
             }
 
-            // Penjumlahan Puluhan Bersih
             for (let i = 1; i <= 20; i++) {
                 for (let j = 1; j <= 20; j++) {
                     let a = i * 10;
@@ -232,7 +231,6 @@
                 }
             }
 
-            // Pengurangan Angka Rapi
             for (let a of cleanNumbers) {
                 for (let b of cleanNumbers) {
                     if (a > b) {
@@ -251,19 +249,14 @@
             let list = [];
             let icons = ['⭐', '🍎', '🚗', '🎈', '🐶', '⚽', '🐱', '🍌', '🌸', '🍭', '🧸', '🚀', '🐟', '🍦', '🐣'];
             
-            // Ribuan variasi hitung benda 1-20 dengan berbagai ikon
             for (let i = 1; i <= 20; i++) {
-                for (let icon of icons) {
-                    for (let p = 0; p < 5; p++) {
-                        let stringBenda = Array(i).fill(icon).join(' ');
-                        let w1 = i === 20 ? 18 : i + 1;
-                        let w2 = Math.max(1, i - 1);
-                        list.push({ img: stringBenda, text: `Berapa jumlah benda (${icon}) pada baris ke-${p+1} ini?`, opts: [i.toString(), w1.toString(), w2.toString()], corr: 0 });
-                    }
-                }
+                let icon = icons[i % icons.length];
+                let stringBenda = Array(i).fill(icon).join(' ');
+                let w1 = i === 20 ? 18 : i + 1;
+                let w2 = Math.max(1, i - 1);
+                list.push({ img: stringBenda, text: `Berapa jumlah benda ${icon} pada gambar?`, opts: [i.toString(), w1.toString(), w2.toString()], corr: 0 });
             }
 
-            // Soal sebelum dan sesudah angka berulang dinamis
             for (let i = 2; i <= 19; i++) {
                 list.push({ img: `🔢`, text: `Angka berapa yang terletak tepat sesudah angka ${i}?`, opts: [(i+1).toString(), i.toString(), (i-1).toString()], corr: 0 });
                 list.push({ img: `🔢`, text: `Angka berapa yang terletak tepat sebelum angka ${i}?`, opts: [(i-1).toString(), (i+1).toString(), (i+2).toString()], corr: 0 });
@@ -273,7 +266,7 @@
         }
 
         function getBentukBank() {
-            let baseList = [
+            let list = [
                 { img: "🔵", text: "Roda sepeda dan kelereng memiliki bentuk dasar...", opts: ["Lingkaran", "Segitiga", "Persegi"], corr: 0 },
                 { img: "📖", text: "Buku tulis dan papan tulis di kelas biasanya berbentuk...", opts: ["Persegi Panjang", "Lingkaran", "Tabung"], corr: 0 },
                 { img: "⛺", text: "Atap rumah atau tenda perkemahan umumnya menyerupai bentuk...", opts: ["Segitiga", "Kotak", "Lingkaran"], corr: 0 },
@@ -283,17 +276,11 @@
                 { img: "🧊", text: "Kotak kado atau mainan dadu biasanya berbentuk...", opts: ["Kubus / Persegi", "Lingkaran", "Elips"], corr: 0 },
                 { img: "⚽", text: "Bola sepak dan bola basket berbentuk...", opts: ["Bola / Bulat", "Kotak", "Segitiga"], corr: 0 }
             ];
-            let list = [];
-            for (let i = 0; i < 150; i++) {
-                baseList.forEach((item, idx) => {
-                    list.push({ img: item.img, text: item.text + (i > 0 ? ` (Sesi ${i+1})` : ''), opts: item.opts, corr: item.corr });
-                });
-            }
             return shuffleArray(list);
         }
 
         function getPolaBank() {
-            let baseList = [
+            let list = [
                 { img: "🔴 🟦 🔴 🟦", text: "Lanjutkan pola bentuk warna merah dan biru berikut ini.", opts: ["🟦", "🔴", "🟢"], corr: 1 },
                 { img: "⭐ 🌙 ⭐ 🌙", text: "Lanjutkan pola bentuk bintang dan bulan berikut ini.", opts: ["🌙", "⭐", "☀️"], corr: 0 },
                 { img: "2, 4, 6, 8", text: "Lanjutkan pola angka loncat dua berikut: 2, 4, 6, 8, ...", opts: ["10", "9", "12"], corr: 0 },
@@ -301,51 +288,33 @@
                 { img: "🍎 🍌 🍎 🍌", text: "Lanjutkan pola buah apel dan pisang berikut ini.", opts: ["🍎", "🍌", "🍊"], corr: 1 },
                 { img: "1, 3, 5, 7", text: "Lanjutkan pola angka ganjil berikut: 1, 3, 5, 7, ...", opts: ["9", "8", "10"], corr: 0 }
             ];
-            let list = [];
-            for (let i = 0; i < 150; i++) {
-                baseList.forEach(item => {
-                    list.push({ img: item.img, text: item.text + (i > 0 ? ` [Ujian ${i+1}]` : ''), opts: item.opts, corr: item.corr });
-                });
-            }
             return shuffleArray(list);
         }
 
         function getKonsepBank() {
-            let baseList = [
+            let list = [
                 { img: "🐘", text: "Di antara hewan berikut, manakah yang ukurannya paling besar?", opts: ["Gajah", "Kucing", "Semut"], corr: 0 },
                 { img: "🍇", text: "Di antara buah berikut, manakah yang ukurannya paling kecil?", opts: ["Buah Anggur", "Semangka", "Melon"], corr: 0 },
                 { img: "📏", text: "Manakah benda yang ukurannya paling panjang?", opts: ["Penggaris panjang", "Penghapus karet", "Koin logam"], corr: 0 },
                 { img: "🏢", text: "Manakah bangunan yang posisinya paling tinggi?", opts: ["Gedung Pencakar Langit", "Rumah Tinggal", "Tenda Kemping"], corr: 0 },
                 { img: "🪶", text: "Benda manakah yang rasanya paling ringan saat diangkat?", opts: ["Sehelai Bulu Burung", "Batu Bata Merah", "Tas Sekolah Penuh Buku"], corr: 0 }
             ];
-            let list = [];
-            for (let i = 0; i < 150; i++) {
-                baseList.forEach(item => {
-                    list.push({ img: item.img, text: item.text + (i > 0 ? ` (Level ${i+1})` : ''), opts: item.opts, corr: item.corr });
-                });
-            }
             return shuffleArray(list);
         }
 
         function getMewarnaiBank() {
-            let baseList = [
+            let list = [
                 { img: "🎨", text: "Warna merah dicampur warna kuning akan menghasilkan warna...", opts: ["Oranye / Jingga", "Hijau", "Ungu"], corr: 0 },
                 { img: "🎨", text: "Warna biru dicampur warna kuning akan menghasilkan warna...", opts: ["Hijau", "Merah", "Pink"], corr: 0 },
                 { img: "🪵", text: "Untuk mewarnai batang pohon, biasanya anak-anak menggunakan warna...", opts: ["Cokelat", "Biru muda", "Merah muda"], corr: 0 },
                 { img: "🎨", text: "Warna primer utama dalam seni rupa adalah...", opts: ["Merah, Kuning, Biru", "Ungu, Pink, Cokelat", "Emas, Perak, Perunggu"], corr: 0 },
                 { img: "☁️", text: "Warna yang paling cocok untuk mewarnai awan cerah di langit adalah...", opts: ["Putih / Biru Muda", "Hitam Pekat", "Merah Menyala"], corr: 0 }
             ];
-            let list = [];
-            for (let i = 0; i < 150; i++) {
-                baseList.forEach(item => {
-                    list.push({ img: item.img, text: item.text + (i > 0 ? ` [Tipe ${i+1}]` : ''), opts: item.opts, corr: item.corr });
-                });
-            }
             return shuffleArray(list);
         }
 
         function getHewanBank() {
-            let baseList = [
+            let list = [
                 { img: "🐠", text: "Hewan apa yang hidup di air dan bernapas dengan insang?", opts: ["Ikan", "Kucing", "Burung"], corr: 0 },
                 { img: "🦅", text: "Hewan manakah yang bisa terbang di udara dengan bebas?", opts: ["Burung", "Sapi", "Kuda"], corr: 0 },
                 { img: "🐱", text: "Suara 'meong' adalah suara khas dari hewan...", opts: ["Kucing", "Anjing", "Bebek"], corr: 0 },
@@ -353,33 +322,21 @@
                 { img: "🐄", text: "Hewan ternak yang menghasilkan susu segar untuk diminum adalah...", opts: ["Sapi", "Singa", "Buaya"], corr: 0 },
                 { img: "🐒", text: "Hewan pintar yang menyukai buah pisang dan suka memanjat pohon adalah...", opts: ["Monyet", "Ikan", "Kura-kura"], corr: 0 }
             ];
-            let list = [];
-            for (let i = 0; i < 150; i++) {
-                baseList.forEach(item => {
-                    list.push({ img: item.img, text: item.text + (i > 0 ? ` (Soal ${i+1})` : ''), opts: item.opts, corr: item.corr });
-                });
-            }
             return shuffleArray(list);
         }
 
         function getTumbuhanBank() {
-            let baseList = [
+            let list = [
                 { img: "🌱", text: "Bagian tumbuhan yang berada di dalam tanah dan menyerap air adalah...", opts: ["Akar", "Daun", "Bunga"], corr: 0 },
                 { img: "🌿", text: "Bagian tumbuhan yang umumnya berwarna hijau dan berfungsi memasak makanan adalah...", opts: ["Daun", "Akar", "Batang"], corr: 0 },
                 { img: "🌳", text: "Bagian kokoh yang menyangga dahan dan daun tumbuhan disebut...", opts: ["Batang", "Bunga", "Buah"], corr: 0 },
                 { img: "🌻", text: "Bagian tumbuhan yang beraroma harum dan biasanya berwarna-warni indah adalah...", opts: ["Bunga", "Akar", "Tanah"], corr: 0 }
             ];
-            let list = [];
-            for (let i = 0; i < 250; i++) {
-                baseList.forEach(item => {
-                    list.push({ img: item.img, text: item.text + (i > 0 ? ` [Bagian ${i+1}]` : ''), opts: item.opts, corr: item.corr });
-                });
-            }
             return shuffleArray(list);
         }
 
         function getInggrisBank() {
-            let baseList = [
+            let list = [
                 { img: "🔴", text: "Apa bahasa Inggris dari warna merah?", opts: ["Red", "Blue", "Green"], corr: 0 },
                 { img: "🔟", text: "Apa bahasa Inggris dari angka sepuluh?", opts: ["Ten", "Five", "One"], corr: 0 },
                 { img: "🐈", text: "Kata 'cat' dalam bahasa Indonesia artinya adalah...", opts: ["Kucing", "Anjing", "Kelinci"], corr: 0 },
@@ -387,12 +344,6 @@
                 { img: "☀️", text: "Apa bahasa Inggris dari matahari?", opts: ["Sun", "Moon", "Star"], corr: 0 },
                 { img: "💧", text: "Apa bahasa Inggris dari air minum?", opts: ["Water", "Fire", "Milk"], corr: 0 }
             ];
-            let list = [];
-            for (let i = 0; i < 150; i++) {
-                baseList.forEach(item => {
-                    list.push({ img: item.img, text: item.text + (i > 0 ? ` (English ${i+1})` : ''), opts: item.opts, corr: item.corr });
-                });
-            }
             return shuffleArray(list);
         }
 
