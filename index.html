@@ -57,6 +57,9 @@
                 <button onclick="playSound('click'); startQuiz('hitung')" class="w-full bg-gradient-to-r from-yellow-500 to-amber-600 text-white font-bold py-3.5 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
                     <span>➕ Hitung Seru (Tambah & Kurang Segar)</span>
                 </button>
+                <button onclick="playSound('click'); startQuiz('math_eng')" class="w-full bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-bold py-3.5 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
+                    <span>🔤 English Math (Tens & Hundreds)</span>
+                </button>
                 <button onclick="playSound('click'); startQuiz('bentuk')" class="w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold py-3.5 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
                     <span>🎨 Mengenal Bentuk & Warna Kreatif</span>
                 </button>
@@ -167,19 +170,19 @@
             }
         }
 
-        function speakText(text) {
+        function speakText(text, lang = 'id-ID') {
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
                 let utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'id-ID';
-                utterance.rate = 0.9;
+                utterance.lang = lang;
+                utterance.rate = 0.85;
                 window.speechSynthesis.speak(utterance);
             }
         }
 
         function speakCurrentQuestion() {
             const q = currentQuestions[currentIndex];
-            speakText(q.text);
+            speakText(q.spokenText || q.text, q.isEnglish ? 'en-US' : 'id-ID');
         }
 
         function shuffleArray(array) {
@@ -201,6 +204,121 @@
             let uniqueList = Array.from(uniqueMap.values());
             let shuffled = shuffleArray(uniqueList);
             return shuffled.slice(0, count);
+        }
+
+        // --- BANTUAN KONVERSI ANGKA KE KATA BAHASA INGGRIS ---
+        function numberToEnglish(num) {
+            const units = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"];
+            const tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
+            
+            if (num < 20) return units[num];
+            if (num < 100) {
+                let t = Math.floor(num / 10);
+                let u = num % 10;
+                return u === 0 ? tens[t] : `${tens[t]} ${units[u]}`;
+            }
+            if (num === 100) return "one hundred";
+            if (num < 200) {
+                let rem = num - 100;
+                return rem === 0 ? "one hundred" : `one hundred ${numberToEnglish(rem)}`;
+            }
+            return num.toString();
+        }
+
+        // --- 100+ BANK SOAL: MATH ENGLISH (TENS & HUNDREDS) ---
+        function getMathEnglishBank() {
+            let list = [];
+            let icons = ['🔢', '➕', '➖', '🧮', '⭐', '🎈'];
+            
+            // Penjumlahan Puluhan/Ratusan (misal: 170 + 40 = ...)
+            let baseTensOrHundreds = [30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170];
+            let addVals = [10, 20, 30, 40, 50];
+
+            for(let i = 0; i < baseTensOrHundreds.length; i++) {
+                for(let j = 0; j < addVals.length; j++) {
+                    let a = baseTensOrHundreds[i];
+                    let b = addVals[j];
+                    let sum = a + b;
+                    
+                    let textDisplay = `${a} + ${b} = ...`;
+                    let textSpoken = `${numberToEnglish(a)} plus ${numberToEnglish(b)} equals?`;
+                    let correctStr = numberToEnglish(sum);
+                    let w1 = numberToEnglish(sum + 10);
+                    let w2 = numberToEnglish(Math.max(10, sum - 10));
+                    if (w1 === correctStr) w1 = numberToEnglish(sum + 20);
+
+                    list.push({
+                        img: icons[(a + b) % icons.length],
+                        text: textDisplay,
+                        spokenText: textSpoken,
+                        isEnglish: true,
+                        options: [
+                            { text: `${numberToEnglish(sum)} (${sum})`, correct: true },
+                            { text: `${w1} (${sum + 10})`, correct: false },
+                            { text: `${w2} (${Math.max(10, sum - 10)})`, correct: false }
+                        ]
+                    });
+                }
+            }
+
+            // Pengurangan Puluhan / Ratusan (misal: 180 - 50 = ...)
+            let subBase = [100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200];
+            let subVals = [10, 20, 30, 40, 50, 60, 70, 80, 90];
+
+            for(let i = 0; i < subBase.length; i++) {
+                for(let j = 0; j < subVals.length; j++) {
+                    let a = subBase[i];
+                    let b = subVals[j];
+                    if (a > b) {
+                        let res = a - b;
+                        let textDisplay = `${a} - ${b} = ...`;
+                        let textSpoken = `${numberToEnglish(a)} minus ${numberToEnglish(b)} equals?`;
+                        let correctStr = numberToEnglish(res);
+                        let w1 = numberToEnglish(res + 10);
+                        let w2 = numberToEnglish(Math.max(10, res - 10));
+
+                        list.push({
+                            img: icons[res % icons.length],
+                            text: textDisplay,
+                            spokenText: textSpoken,
+                            isEnglish: true,
+                            options: [
+                                { text: `${numberToEnglish(res)} (${res})`, correct: true },
+                                { text: `${w1} (${res + 10})`, correct: false },
+                                { text: `${w2} (${Math.max(10, res - 10)})`, correct: false }
+                            ]
+                        });
+                    }
+                }
+            }
+
+            // Tambahan soal spesifik yang diminta: 170 + 40 = ...
+            for(let k = 0; k < 15; k++) {
+                list.push({
+                    img: "🧮",
+                    text: `170 + 40 = ...`,
+                    spokenText: `one hundred seventy plus forty equals?`,
+                    isEnglish: true,
+                    options: [
+                        { text: `two hundred ten (210)`, correct: true },
+                        { text: `two hundred (200)`, correct: false },
+                        { text: `two hundred twenty (220)`, correct: false }
+                    ]
+                });
+                list.push({
+                    img: "🔢",
+                    text: `150 + 50 = ...`,
+                    spokenText: `one hundred fifty plus fifty equals?`,
+                    isEnglish: true,
+                    options: [
+                        { text: `two hundred (200)`, correct: true },
+                        { text: `one hundred ninety (190)`, correct: false },
+                        { text: `two hundred ten (210)`, correct: false }
+                    ]
+                });
+            }
+
+            return shuffleArray(list);
         }
 
         // --- 100+ BANK SOAL: OLIMPIADE TK (Tanpa angka di teks) ---
@@ -487,6 +605,9 @@
             } else if (category === 'hitung') {
                 pool = getHitungBank();
                 totalQuestionsCount = 10;
+            } else if (category === 'math_eng') {
+                pool = getMathEnglishBank();
+                totalQuestionsCount = 10;
             } else if (category === 'bentuk') {
                 pool = getBentukBank();
                 totalQuestionsCount = 10;
@@ -511,7 +632,7 @@
             } else if (category === 'semua') {
                 let mixPool = [
                     ...shuffleArray(getOlimpiadeTKBank()).slice(0, 3),
-                    ...shuffleArray(getAngkaBank()).slice(0, 3),
+                    ...shuffleArray(getMathEnglishBank()).slice(0, 3),
                     ...shuffleArray(getHitungBank()).slice(0, 3),
                     ...shuffleArray(getBentukBank()).slice(0, 2),
                     ...shuffleArray(getPolaBank()).slice(0, 2),
@@ -542,7 +663,8 @@
             document.getElementById('question-image').innerText = q.img;
             document.getElementById('question-text').innerText = q.text;
 
-            speakText(q.text);
+            // Membacakan suara sesuai jenis soal (Bahasa Inggris atau Indonesia)
+            speakText(q.spokenText || q.text, q.isEnglish ? 'en-US' : 'id-ID');
 
             const optionsContainer = document.getElementById('options-container');
             optionsContainer.innerHTML = '';
@@ -568,6 +690,7 @@
         function selectOption(isCorrect, selectedIndex, optionsList) {
             const options = document.getElementById('options-container').children;
             const feedback = document.getElementById('feedback-container');
+            const q = currentQuestions[currentIndex];
             
             for (let i = 0; i < options.length; i++) {
                 options[i].disabled = true;
@@ -586,12 +709,24 @@
                 score += pointsPerQuestion;
                 feedback.className = "mb-3 p-3 rounded-2xl text-center font-bold text-base bg-emerald-100 text-emerald-800 border-2 border-emerald-200 animate-pop";
                 feedback.innerText = "🌟 Pintar Sekali! Jawabanmu Benar! 🎉";
-                speakText("Benar, hebat sekali!");
+                
+                // Suara benar berbahasa Inggris khusus kategori English Math
+                if (q.isEnglish) {
+                    speakText("Correct, great job!", "en-US");
+                } else {
+                    speakText("Benar, hebat sekali!");
+                }
             } else {
                 playSound('wrong');
                 feedback.className = "mb-3 p-3 rounded-2xl text-center font-bold text-base bg-rose-100 text-rose-800 border-2 border-emerald-200 animate-pop";
                 feedback.innerText = "💪 Belum Tepat, Yuk Coba Lagi di Soal Berikutnya!";
-                speakText("Belum tepat, ayo coba lagi!");
+                
+                // Suara salah berbahasa Inggris khusus kategori English Math
+                if (q.isEnglish) {
+                    speakText("Incorrect, try again!", "en-US");
+                } else {
+                    speakText("Belum tepat, ayo coba lagi!");
+                }
             }
 
             feedback.classList.add('block');
