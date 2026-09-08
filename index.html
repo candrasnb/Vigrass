@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dunia Belajar Anak Cerdas</title>
+    <title>Dunia Belajar & Olimpiade Anak Cerdas</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -20,7 +20,7 @@
         .animate-pop { animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
     </style>
 </head>
-<body class="bg-gradient-to-tr from-violet-900 via-indigo-800 to-blue-900 min-h-screen flex items-center justify-center p-4 text-slate-800 relative overflow-x-hidden">
+<body class="bg-gradient-to-tr from-indigo-950 via-purple-900 to-blue-950 min-h-screen flex items-center justify-center p-4 text-slate-800 relative overflow-x-hidden">
 
     <!-- Background Glow -->
     <div class="absolute top-10 left-10 w-32 h-32 bg-pink-500/30 rounded-full blur-3xl pointer-events-none"></div>
@@ -34,9 +34,9 @@
                 ✨ Akademi Cerdas Si Kecil ✨
             </div>
             <h1 class="text-xl md:text-2xl font-extrabold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent leading-tight">
-                Dunia Belajar Anak Cerdas – Main Sambil Berhitung & Menjelajah 🌍
+                Arena Bermain, Belajar & Persiapan Olimpiade TK 🌍
             </h1>
-            <p class="text-slate-500 text-sm mt-1">Pilih petualangan belajarmu hari ini!</p>
+            <p class="text-slate-500 text-sm mt-1">Pilih petualangan seru untuk jagoan kecil hari ini!</p>
         </div>
 
         <!-- Setup Screen -->
@@ -46,34 +46,37 @@
             </div>
             <div class="grid grid-cols-1 gap-2.5">
                 <button onclick="playSound('click'); startQuiz('semua')" class="w-full bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white font-bold py-3.5 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
-                    <span>🌟 Semua Materi (Benar-Benar Campuran)</span>
+                    <span>🌟 Semua Materi (Campuran Seru)</span>
+                </button>
+                <button onclick="playSound('click'); startQuiz('olimpiade_tk')" class="w-full bg-gradient-to-r from-amber-500 to-orange-600 text-white font-bold py-3.5 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
+                    <span>🏆 Latihan Spesial Olimpiade Matematika TK</span>
                 </button>
                 <button onclick="playSound('click'); startQuiz('angka')" class="w-full bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold py-3.5 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
-                    <span>🔢 Pengenalan Angka & Hitung Benda</span>
+                    <span>🔢 Pengenalan Angka & Hitung Benda Baru</span>
                 </button>
-                <button onclick="playSound('click'); startQuiz('hitung')" class="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold py-3.5 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
-                    <span>➕ Hitung Seru (Tambah & Kurang)</span>
+                <button onclick="playSound('click'); startQuiz('hitung')" class="w-full bg-gradient-to-r from-yellow-500 to-amber-600 text-white font-bold py-3.5 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
+                    <span>➕ Hitung Seru (Tambah & Kurang Segar)</span>
                 </button>
                 <button onclick="playSound('click'); startQuiz('bentuk')" class="w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold py-3.5 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
-                    <span>🎨 Mengenal Bentuk & Warna</span>
+                    <span>🎨 Mengenal Bentuk & Warna Kreatif</span>
                 </button>
                 <button onclick="playSound('click'); startQuiz('pola')" class="w-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold py-3.5 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
-                    <span>🧩 Pola Urutan (Pattern)</span>
+                    <span>🧩 Pola Urutan Logika (Pattern)</span>
                 </button>
                 <button onclick="playSound('click'); startQuiz('konsep')" class="w-full bg-gradient-to-r from-indigo-500 to-violet-600 text-white font-bold py-3.5 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
-                    <span>🐘 Besar/Kecil & Panjang/Pendek</span>
+                    <span>🐘 Besar/Kecil & Tinggi/Pendek Baru</span>
                 </button>
                 <button onclick="playSound('click'); startQuiz('mewarnai')" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold py-3.5 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
-                    <span>🎨 Seni & Campuran Warna</span>
+                    <span>🎨 Seni & Campuran Warna Unik</span>
                 </button>
-                <button onclick="playSound('click'); startQuiz('hewan')" class="w-full bg-gradient-to-r from-yellow-600 to-amber-600 text-white font-bold py-3.5 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
-                    <span>🦁 Dunia Hewan & Satwa</span>
+                <button onclick="playSound('click'); startQuiz('hewan')" class="w-full bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold py-3.5 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
+                    <span>🦁 Dunia Hewan & Karakter Satwa</span>
                 </button>
                 <button onclick="playSound('click'); startQuiz('tumbuhan')" class="w-full bg-gradient-to-r from-green-600 to-emerald-700 text-white font-bold py-3.5 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
-                    <span>🌱 Mengenal Tumbuhan & Alam</span>
+                    <span>🌱 Tumbuhan & Keajaiban Alam</span>
                 </button>
                 <button onclick="playSound('click'); startQuiz('inggris')" class="w-full bg-gradient-to-r from-blue-600 to-sky-600 text-white font-bold py-3.5 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
-                    <span>🔤 Belajar Bahasa Inggris Dasar</span>
+                    <span>🔤 Kosakata Bahasa Inggris Dasar</span>
                 </button>
             </div>
         </div>
@@ -200,43 +203,38 @@
             return shuffled.slice(0, count);
         }
 
-        // --- BANK SOAL AMAN & TERSTRUKTUR ---
+        // --- BANK SOAL BARU YANG SEGAR DAN ACAK ---
+        function getOlimpiadeTKBank() {
+            return shuffleArray([
+                { img: "🧠", text: "Ibu membeli 6 buah mangga. Sebanyak 2 mangga diberikan kepada bibi, lalu paman datang membawa 3 mangga lagi. Berapa jumlah mangga sekarang?", options: [{text: "7 buah", correct: true}, {text: "6 buah", correct: false}, {text: "8 buah", correct: false}] },
+                { img: "🔢", text: "Perhatikan deret bilangan loncat berikut: 3, 6, 9, 12, ... Berapakah angka berikutnya?", options: [{text: "15", correct: true}, {text: "14", correct: false}, {text: "16", correct: false}] },
+                { img: "🧩", text: "Dalam sebuah barisan mainan, boneka beruang berada di urutan ke-4 dari depan dan urutan ke-4 dari belakang. Berapa jumlah total mainan dalam barisan itu?", options: [{text: "7 mainan", correct: true}, {text: "8 mainan", correct: false}, {text: "6 mainan", correct: false}] },
+                { img: "⭐", text: "Jika hari ini adalah hari Kamis, hari apakah yang akan datang tiga hari lagi?", options: [{text: "Minggu", correct: true}, {text: "Sabtu", correct: false}, {text: "Senin", correct: false}] },
+                { img: "📐", text: "Sebuah bangun ruang yang semua sisinya berbentuk persegi dan menyerupai kotak dadu disebut...", options: [{text: "Kubus", correct: true}, {text: "Bola", correct: false}, {text: "Tabung", correct: false}] },
+                { img: "🎒", text: "Siti mempunyai 12 pensil warna. Dipinjam oleh temannya 5 pensil, lalu Siti membeli lagi 4 pensil baru. Berapa jumlah pensil Siti sekarang?", options: [{text: "11 pensil", correct: true}, {text: "10 pensil", correct: false}, {text: "12 pensil", correct: false}] },
+                { img: "🔄", text: "Lanjutkan pola urutan bentuk berikut: 🟢 🟡 🔴 🟢 🟡 ...", options: [{text: "🔴", correct: true}, {text: "🟢", correct: false}, {text: "🟡", correct: false}] },
+                { img: "⚖️", text: "Di antara benda-benda berikut, manakah yang paling ringan dan mudah diterbangkan angin?", options: [{text: "Sehelai Kertas", correct: true}, {text: "Batu Bata", correct: false}, {text: "Kamus Tebal", correct: false}] },
+                { img: "⏱️", text: "Waktu dalam sehari saat bulan dan bintang mulai bermunculan di langit malam disebut...", options: [{text: "Malam hari", correct: true}, {text: "Siang hari", correct: false}, {text: "Pagi hari", correct: false}] },
+                { img: "🎯", text: "Angka berapakah yang nilainya berada di tengah-tengah antara angka 4 dan angka 6?", options: [{text: "5", correct: true}, {text: "3", correct: false}, {text: "7", correct: false}] }
+            ]);
+        }
+
         function getAngkaBank() {
             let list = [];
-            let icons = ['⭐', '🍎', '🚗', '🎈', '🐶', '⚽', '🐱', '🍌', '🌸', '🍭', '🧸', '🚀', '🐟', '🍦', '🐣', '🍉', '🍕'];
+            let icons = ['🌟', '🍎', '🚗', '🎈', '🐶', '⚽', '🐱', '🍌', '🌸', '🐟', '🍦', '🐣', '🚀', '🧸', '🍭', '🍉', '🍕'];
             for (let i = 1; i <= 20; i++) {
                 let icon = icons[(i * 3) % icons.length];
                 let stringBenda = Array(i).fill(icon).join(' ');
-                let w1 = i === 20 ? 17 : i + 2;
+                let w1 = i === 20 ? 15 : i + 2;
                 let w2 = Math.max(1, i - 2);
                 if (w1 === i) w1 = i + 1;
                 list.push({ 
                     img: stringBenda, 
-                    text: `Berapa jumlah total benda ${icon} pada gambar di atas?`, 
+                    text: `Hitunglah berapa jumlah total benda ${icon} pada gambar di atas?`, 
                     options: [
                         { text: i.toString(), correct: true },
                         { text: w1.toString(), correct: false },
                         { text: w2.toString(), correct: false }
-                    ] 
-                });
-            }
-            for (let i = 2; i <= 18; i++) {
-                list.push({ 
-                    img: `🔢`, 
-                    text: `Angka berapakah yang posisinya tepat sesudah angka ${i}?`, 
-                    options: [
-                        { text: (i+1).toString(), correct: true },
-                        { text: (i-1).toString(), correct: false },
-                        { text: (i+2).toString(), correct: false }
-                    ] 
-                });
-                list.push({ 
-                    img: `🔢`, 
-                    text: `Angka berapakah yang posisinya tepat sebelum angka ${i}?`, 
-                    options: [
-                        { text: (i-1).toString(), correct: true },
-                        { text: (i+1).toString(), correct: false },
-                        { text: (i-2).toString(), correct: false }
                     ] 
                 });
             }
@@ -245,32 +243,15 @@
 
         function getHitungBank() {
             let list = [];
-            for (let a = 1; a <= 15; a++) {
-                for (let b = 1; b <= 15; b++) {
+            for (let a = 1; a <= 10; a++) {
+                for (let b = 1; b <= 10; b++) {
                     let hasil = a + b;
-                    let w1 = hasil + 2;
-                    let w2 = Math.max(1, hasil - 2);
-                    if (w1 === w2) w2 = hasil + 3;
+                    let w1 = hasil + 1;
+                    let w2 = Math.max(1, hasil - 1);
+                    if (w1 === w2) w2 = hasil + 2;
                     list.push({ 
                         img: "➕", 
-                        text: `Berapa hasil penjumlahan dari ${a} ditambah ${b}?`, 
-                        options: [
-                            { text: hasil.toString(), correct: true },
-                            { text: w1.toString(), correct: false },
-                            { text: w2.toString(), correct: false }
-                        ] 
-                    });
-                }
-            }
-            for (let a = 4; a <= 20; a++) {
-                for (let b = 1; b < a; b++) {
-                    let hasil = a - b;
-                    let w1 = hasil + 2;
-                    let w2 = Math.max(0, hasil - 2);
-                    if (w1 === w2) w2 = hasil + 3;
-                    list.push({ 
-                        img: "📉", 
-                        text: `Berapa hasil pengurangan dari ${a} dikurangi ${b}?`, 
+                        text: `Berapakah hasil penjumlahan dari ${a} ditambah ${b}?`, 
                         options: [
                             { text: hasil.toString(), correct: true },
                             { text: w1.toString(), correct: false },
@@ -284,95 +265,81 @@
 
         function getBentukBank() {
             return shuffleArray([
-                { img: "🔵", text: "Benda seperti roda mobil dan koin uang logam memiliki bentuk...", options: [{text: "Lingkaran", correct: true}, {text: "Segitiga", correct: false}, {text: "Persegi", correct: false}] },
-                { img: "📖", text: "Buku cerita dan papan tulis kelas umumnya berbentuk...", options: [{text: "Persegi Panjang", correct: true}, {text: "Lingkaran", correct: false}, {text: "Trapesium", correct: false}] },
-                { img: "⛺", text: "Bentuk potongan pizza atau atap tenda pramuka menyerupai...", options: [{text: "Segitiga", correct: true}, {text: "Persegi", correct: false}, {text: "Lingkaran", correct: false}] },
-                { img: "🍃", text: "Daun pohon yang tumbuh subur dan sehat di taman biasanya berwarna...", options: [{text: "Hijau", correct: true}, {text: "Merah", correct: false}, {text: "Ungu", correct: false}] },
-                { img: "🍌", text: "Buah pisang yang sudah matang dan manis berwarna...", options: [{text: "Kuning", correct: true}, {text: "Hitam", correct: false}, {text: "Biru", correct: false}] },
-                { img: "🍓", text: "Buah stroberi segar yang siap dipetik di kebun berwarna...", options: [{text: "Merah", correct: true}, {text: "Hijau", correct: false}, {text: "Kuning", correct: false}] },
-                { img: "🧊", text: "Kotak kado ulang tahun atau mainan kubus rubik berbentuk...", options: [{text: "Kubus / Persegi", correct: true}, {text: "Lingkaran", correct: false}, {text: "Elips", correct: false}] },
-                { img: "⚽", text: "Bola sepak untuk bermain di lapangan berbentuk...", options: [{text: "Bola / Bulat", correct: true}, {text: "Kotak", correct: false}, {text: "Segitiga", correct: false}] },
-                { img: "⭐", text: "Bentuk bintang kejora di langit malam biasanya mempunyai jumlah ujung...", options: [{text: "Lima", correct: true}, {text: "Tiga", correct: false}, {text: "Empat", correct: false}] },
-                { img: "🚪", text: "Pintu kamar rumah umumnya memiliki bentuk dasar...", options: [{text: "Persegi Panjang", correct: true}, {text: "Lingkaran", correct: false}, {text: "Segitiga", correct: false}] }
+                { img: "🪙", text: "Koin uang logam dan roda sepeda berbentuk bangun datar...", options: [{text: "Lingkaran", correct: true}, {text: "Persegi", correct: false}, {text: "Segitiga", correct: false}] },
+                { img: "📦", text: "Kotak kado ulang tahun berbentuk kubus memiliki sisi sebanyak...", options: [{text: "6 sisi sama besar", correct: true}, {text: "3 sisi", correct: false}, {text: "5 sisi", correct: false}] },
+                { img: "🍕", text: "Potongan sepotong pizza atau atap rumah tradisional menyerupai bentuk...", options: [{text: "Segitiga", correct: true}, {text: "Persegi Panjang", correct: false}, {text: "Lingkaran", correct: false}] },
+                { img: "🪟", text: "Jendela kaca kamar tidur yang sisi-sisinya sama panjang berbentuk...", options: [{text: "Persegi", correct: true}, {text: "Lonjong", correct: false}, {text: "Trapesium", correct: false}] },
+                { img: "📺", text: "Layar televisi modern atau papan tulis di kelas umumnya berbentuk...", options: [{text: "Persegi Panjang", correct: true}, {text: "Segitiga", correct: false}, {text: "Lingkaran", correct: false}] },
+                { img: "🏉", text: "Bentuk bola rugby atau buah semangka lonjong menyerupai bangun...", options: [{text: "Lonjong / Oval", correct: true}, {text: "Persegi", correct: false}, {text: "Kubus", correct: false}] }
             ]);
         }
 
         function getPolaBank() {
             return shuffleArray([
-                { img: "🔴 🟦 🔴 🟦", text: "Lanjutkan pola warna merah dan biru berikutnya secara teratur.", options: [{text: "🔴", correct: true}, {text: "🟦", correct: false}, {text: "🟢", correct: false}] },
-                { img: "⭐ 🌙 ⭐ 🌙", text: "Lanjutkan pola bentuk bintang dan bulan berikut ini.", options: [{text: "⭐", correct: true}, {text: "🌙", correct: false}, {text: "☀️", correct: false}] },
-                { img: "2, 4, 6, 8", text: "Lanjutkan pola deret angka loncat dua: 2, 4, 6, 8, ...", options: [{text: "10", correct: true}, {text: "9", correct: false}, {text: "12", correct: false}] },
-                { img: "🐱 🐶 🐱 🐶", text: "Lanjutkan urutan hewan kucing dan anjing berikutnya.", options: [{text: "🐱", correct: true}, {text: "🐶", correct: false}, {text: "🐰", correct: false}] },
-                { img: "🍎 🍌 🍎 🍌", text: "Lanjutkan pola urutan buah apel dan pisang berikut.", options: [{text: "🍎", correct: true}, {text: "🍌", correct: false}, {text: "🍊", correct: false}] },
-                { img: "1, 3, 5, 7", text: "Lanjutkan deret angka ganjil berikut ini: 1, 3, 5, 7, ...", options: [{text: "9", correct: true}, {text: "8", correct: false}, {text: "10", correct: false}] },
-                { img: "🟢 🟡 🟢 🟡", text: "Lanjutkan urutan warna hijau dan kuning berikut.", options: [{text: "🟢", correct: true}, {text: "🟡", correct: false}, {text: "🔴", correct: false}] },
-                { img: "10, 9, 8, 7", text: "Lanjutkan hitung mundur angka berikut: 10, 9, 8, 7, ...", options: [{text: "6", correct: true}, {text: "5", correct: false}, {text: "8", correct: false}] },
-                { img: "🔺 🔹 🔺 🔹", text: "Lanjutkan pola bentuk segitiga dan belah ketupat ini.", options: [{text: "🔺", correct: true}, {text: "🔹", correct: false}, {text: "🟥", correct: false}] }
+                { img: "🟡 🟢 🟡 🟢", text: "Lanjutkan pola urutan warna kuning dan hijau berikutnya dengan benar.", options: [{text: "🟡", correct: true}, {text: "🟢", correct: false}, {text: "🔴", correct: false}] },
+                { img: "🍎 🍌 🍎 🍌", text: "Lanjutkan pola urutan buah apel dan pisang berikut.", options: [{text: "🍎", correct: true}, {text: "🍌", correct: false}, {text: "🍇", correct: false}] },
+                { img: "2, 4, 6, 8", text: "Lanjutkan deret hitung loncat dua berikut: 2, 4, 6, 8, ...", options: [{text: "10", correct: true}, {text: "9", correct: false}, {text: "12", correct: false}] },
+                { img: "⭐ ⭐ 🌙 ⭐ ⭐", text: "Lanjutkan pola urutan simbol bintang dan bulan sabit berikut.", options: [{text: "🌙", correct: true}, {text: "⭐", correct: false}, {text: "☀️", correct: false}] },
+                { img: "3, 6, 9, 12", text: "Lanjutkan deret hitung loncat tiga berikut: 3, 6, 9, 12, ...", options: [{text: "15", correct: true}, {text: "14", correct: false}, {text: "16", correct: false}] },
+                { img: "🚗 🚲 🚗 🚲", text: "Lanjutkan urutan mainan mobil dan sepeda berikut.", options: [{text: "🚗", correct: true}, {text: "🚲", correct: false}, {text: "🚀", correct: false}] }
             ]);
         }
 
         function getKonsepBank() {
             return shuffleArray([
-                { img: "🐘", text: "Di antara pilihan hewan berikut, manakah yang tubuhnya paling besar?", options: [{text: "Gajah", correct: true}, {text: "Kucing", correct: false}, {text: "Semut", correct: false}] },
-                { img: "🍇", text: "Di antara buah-buahan berikut, manakah yang ukurannya paling kecil?", options: [{text: "Buah Anggur", correct: true}, {text: "Semangka", correct: false}, {text: "Melon", correct: false}] },
-                { img: "📏", text: "Manakah benda yang ukurannya paling panjang di kelas?", options: [{text: "Penggaris Panjang", correct: true}, {text: "Penghapus Karet", correct: false}, {text: "Koin Logam", correct: false}] },
-                { img: "🏢", text: "Manakah bangunan yang posisi tingginya paling menjulang?", options: [{text: "Gedung Pencakar Langit", correct: true}, {text: "Rumah Tinggal", correct: false}, {text: "Tenda Kemping", correct: false}] },
-                { img: "🪶", text: "Benda manakah yang rasanya paling ringan ketika dipegang?", options: [{text: "Sehelai Bulu Burung", correct: true}, {text: "Batu Bata Merah", correct: false}, {text: "Tas Penuh Buku", correct: false}] },
-                { img: "🦒", text: "Hewan darat manakah yang memiliki bagian leher paling panjang?", options: [{text: "Jerapah", correct: true}, {text: "Kucing", correct: false}, {text: "Tikus", correct: false}] },
-                { img: "🐳", text: "Hewan air manakah yang memiliki ukuran tubuh paling raksasa?", options: [{text: "Paus Biru", correct: true}, {text: "Ikan Hias", correct: false}, {text: "Kepiting", correct: false}] }
+                { img: "🐋", text: "Manakah hewan laut berikut yang ukuran tubuhnya paling besar di bumi?", options: [{text: "Paus Biru", correct: true}, {text: "Ikan Hias", correct: false}, {text: "Kepiting Kecil", correct: false}] },
+                { img: "🐞", text: "Hewan kecil bertotol merah apakah yang ukurannya sangat mini?", options: [{text: "Kumbang / Kepik", correct: true}, {text: "Kuda", correct: false}, {text: "Gajah", correct: false}] },
+                { img: "🦒", text: "Hewan sabana manakah yang memiliki ciri khas leher paling tinggi?", options: [{text: "Jerapah", correct: true}, {text: "Kelinci", correct: false}, {text: "Bebek", correct: false}] },
+                { img: "✏️", text: "Manakah benda yang bentuknya paling panjang untuk menulis di buku?", options: [{text: "Pensil Panjang", correct: true}, {text: "Penghapus Karet", correct: false}, {text: "Kelereng", correct: false}] },
+                { img: "☁️", text: "Di antara objek berikut, manakah yang paling ringan melayang di langit?", options: [{text: "Awan Putih", correct: true}, {text: "Gunung", correct: false}, {text: "Gedung", correct: false}] }
             ]);
         }
 
         function getMewarnaiBank() {
             return shuffleArray([
-                { img: "🎨", text: "Pencampuran warna merah dengan warna kuning akan menghasilkan warna...", options: [{text: "Oranye / Jingga", correct: true}, {text: "Hijau", correct: false}, {text: "Ungu", correct: false}] },
-                { img: "🎨", text: "Pencampuran warna biru dengan warna kuning akan menghasilkan warna...", options: [{text: "Hijau", correct: true}, {text: "Merah", correct: false}, {text: "Pink", correct: false}] },
-                { img: "🪵", text: "Biasanya anak-anak menggunakan warna apa untuk mewarnai batang pohon?", options: [{text: "Cokelat", correct: true}, {text: "Biru Muda", correct: false}, {text: "Merah Muda", correct: false}] },
-                { img: "🎨", text: "Manakah yang termasuk kelompok warna primer (utama) dalam seni?", options: [{text: "Merah, Kuning, Biru", correct: true}, {text: "Ungu, Pink, Cokelat", correct: false}, {text: "Emas, Perak, Perunggu", correct: false}] },
-                { img: "☁️", text: "Warna yang paling pas untuk mewarnai gumpalan awan di siang cerah adalah...", options: [{text: "Putih / Biru Muda", correct: true}, {text: "Hitam Pekat", correct: false}, {text: "Merah Menyala", correct: false}] },
-                { img: "🎨", text: "Pencampuran warna merah dan biru dalam seni lukis akan menjadi warna...", options: [{text: "Ungu", correct: true}, {text: "Hijau", correct: false}, {text: "Kuning", correct: false}] }
+                { img: "🎨", text: "Jika warna biru dicampur dengan warna merah, akan menghasilkan warna...", options: [{text: "Ungu", correct: true}, {text: "Hijau", correct: false}, {text: "Kuning", correct: false}] },
+                { img: "🎨", text: "Jika warna kuning dicampur dengan warna biru, akan menghasilkan warna...", options: [{text: "Hijau", correct: true}, {text: "Merah", correct: false}, {text: "Oranye", correct: false}] },
+                { img: "🎨", text: "Manakah yang merupakan kelompok warna primer (dasar) dalam seni lukis?", options: [{text: "Merah, Kuning, Biru", correct: true}, {text: "Pink, Ungu, Cokelat", correct: false}, {text: "Emas dan Perak", correct: false}] },
+                { img: "🍊", text: "Warna apa yang paling pas digunakan untuk mewarnai buah jeruk matang?", options: [{text: "Oranye / Jingga", correct: true}, {text: "Biru Tua", correct: false}, {text: "Hitam", correct: false}] },
+                { img: "🎨", text: "Jika warna merah dicampur dengan warna kuning, akan menghasilkan warna...", options: [{text: "Oranye / Jingga", correct: true}, {text: "Ungu", correct: false}, {text: "Hijau", correct: false}] }
             ]);
         }
 
         function getHewanBank() {
             return shuffleArray([
-                { img: "🐠", text: "Hewan apakah yang hidup di dalam air dan bernapas menggunakan insang?", options: [{text: "Ikan", correct: true}, {text: "Kucing", correct: false}, {text: "Burung", correct: false}] },
-                { img: "🦅", text: "Hewan manakah yang mempunyai sayap dan bisa terbang tinggi di udara?", options: [{text: "Burung", correct: true}, {text: "Sapi", correct: false}, {text: "Kuda", correct: false}] },
-                { img: "🐱", text: "Suara 'meong... meong...' adalah suara khas dari hewan...", options: [{text: "Kucing", correct: true}, {text: "Anjing", correct: false}, {text: "Bebek", correct: false}] },
-                { img: "🦒", text: "Satwa liar berleher panjang pemakan daun pucuk pohon adalah...", options: [{text: "Jerapah", correct: true}, {text: "Kelinci", correct: false}, {text: "Tikus", correct: false}] },
-                { img: "🐄", text: "Hewan ternak berkaki empat yang menghasilkan susu sehat adalah...", options: [{text: "Sapi", correct: true}, {text: "Singa", correct: false}, {text: "Buaya", correct: false}] },
-                { img: "🐒", text: "Hewan cerdas yang suka bergelantungan di pohon dan suka pisang yaitu...", options: [{text: "Monyet", correct: true}, {text: "Ikan", correct: false}, {text: "Kura-kura", correct: false}] },
-                { img: "🦆", text: "Unggas air berkaki dua yang berbunyi 'kwek kwek' adalah...", options: [{text: "Bebek", correct: true}, {text: "Kambing", correct: false}, {text: "Kelinci", correct: false}] },
-                { img: "🦁", text: "Hewan buas yang dijuluki sebagai raja hutan adalah...", options: [{text: "Singa", correct: true}, {text: "Kelinci", correct: false}, {text: "Rusa", correct: false}] }
+                { img: "🐧", text: "Hewan kutub unik bersayap yang tidak bisa terbang namun pandai berenang adalah...", options: [{text: "Pinguin", correct: true}, {text: "Elang", correct: false}, {text: "Merpati", correct: false}] },
+                { img: "🦋", text: "Serangga cantik bersayap warna-warni yang berasal dari metamorfosis ulat adalah...", options: [{text: "Kupu-kupu", correct: true}, {text: "Nyamuk", correct: false}, {text: "Lalat", correct: false}] },
+                { img: "🐯", text: "Hewan buas karnivora berkulit belang oren-hitam yang dijuluki harimau adalah...", options: [{text: "Harimau", correct: true}, {text: "Kelinci", correct: false}, {text: "Kambing", correct: false}] },
+                { img: "🐨", text: "Mamalia pemanjat pohon khas dari Australia yang suka tidur di pohon eukaliptus...", options: [{text: "Koala", correct: true}, {text: "Ayam", correct: false}, {text: "Bebek", correct: false}] },
+                { img: "🐼", text: "Beruang lucu asal Tiongkok berbulu hitam putih yang sangat suka makan bambu...", options: [{text: "Panda", correct: true}, {text: "Singa", correct: false}, {text: "Kuda", correct: false}] }
             ]);
         }
 
         function getTumbuhanBank() {
             return shuffleArray([
-                { img: "🌱", text: "Bagian tumbuhan yang tertanam di dalam tanah untuk menyerap air adalah...", options: [{text: "Akar", correct: true}, {text: "Daun", correct: false}, {text: "Bunga", correct: false}] },
-                { img: "🌿", text: "Bagian tumbuhan berwarn hijau yang berfungsi memasak makanan disebut...", options: [{text: "Daun", correct: true}, {text: "Akar", correct: false}, {text: "Batang", correct: false}] },
-                { img: "🌳", text: "Bagian kokoh tumbuhan yang berfungsi menegakkan dahan dan ranting yaitu...", options: [{text: "Batang", correct: true}, {text: "Bunga", correct: false}, {text: "Buah", correct: false}] },
-                { img: "🌻", text: "Bagian tumbuhan yang berbau harum dan memiliki mahkota indah adalah...", options: [{text: "Bunga", correct: true}, {text: "Akar", correct: false}, {text: "Tanah", correct: false}] },
-                { img: "🍎", text: "Bagian tumbuhan tempat menyimpan cadangan makanan manis yang bisa dimakan...", options: [{text: "Buah", correct: true}, {text: "Dahan", correct: false}, {text: "Akar", correct: false}] }
+                { img: "🌱", text: "Bagian tanaman yang tertanam di dalam tanah dan berfungsi menyerap air adalah...", options: [{text: "Akar", correct: true}, {text: "Daun", correct: false}, {text: "Bunga", correct: false}] },
+                { img: "🌿", text: "Bagian tanaman yang umumnya berwarna hijau dan berfungsi untuk bernapas adalah...", options: [{text: "Daun", correct: true}, {text: "Akar", correct: false}, {text: "Batang", correct: false}] },
+                { img: "🌳", text: "Bagian tanaman yang keras dan kokoh untuk menegakkan pohon dinamakan...", options: [{text: "Batang", correct: true}, {text: "Buah", correct: false}, {text: "Bunga", correct: false}] },
+                { img: "🌸", text: "Bagian tanaman yang berbau harum dan menarik serangga untuk datang disebut...", options: [{text: "Bunga", correct: true}, {text: "Akar", correct: false}, {text: "Tanah", correct: false}] }
             ]);
         }
 
         function getInggrisBank() {
             return shuffleArray([
-                { img: "🔴", text: "Apakah terjemahan bahasa Inggris dari warna merah?", options: [{text: "Red", correct: true}, {text: "Blue", correct: false}, {text: "Green", correct: false}] },
-                { img: "🔟", text: "Apakah bahasa Inggris dari angka sepuluh?", options: [{text: "Ten", correct: true}, {text: "Five", correct: false}, {text: "One", correct: false}] },
-                { img: "🐈", text: "Apa arti kata 'cat' dalam bahasa Indonesia?", options: [{text: "Kucing", correct: true}, {text: "Anjing", correct: false}, {text: "Kelinci", correct: false}] },
-                { img: "🍎", text: "Apa arti kata 'apple' dalam bahasa Indonesia?", options: [{text: "Apel", correct: true}, {text: "Pisang", correct: false}, {text: "Jeruk", correct: false}] },
-                { img: "☀️", text: "Apakah bahasa Inggris dari matahari pagi?", options: [{text: "Sun", correct: true}, {text: "Moon", correct: false}, {text: "Star", correct: false}] },
-                { img: "💧", text: "Apakah bahasa Inggris untuk air minum?", options: [{text: "Water", correct: true}, {text: "Fire", correct: false}, {text: "Milk", correct: false}] },
-                { img: "🐶", text: "Apakah bahasa Inggris untuk hewan anjing?", options: [{text: "Dog", correct: true}, {text: "Cat", correct: false}, {text: "Bird", correct: false}] },
-                { img: "🏫", text: "Apakah bahasa Inggris untuk tempat sekolah?", options: [{text: "School", correct: true}, {text: "House", correct: false}, {text: "Hospital", correct: false}] }
+                { img: "🔵", text: "Apakah terjemahan bahasa Inggris dari warna biru?", options: [{text: "Blue", correct: true}, {text: "Red", correct: false}, {text: "Yellow", correct: false}] },
+                { img: "5️⃣", text: "Apakah bahasa Inggris dari angka lima?", options: [{text: "Five", correct: true}, {text: "Ten", correct: false}, {text: "One", correct: false}] },
+                { img: "🐶", text: "Apa arti kosakata bahasa Inggris 'dog' dalam bahasa Indonesia?", options: [{text: "Anjing", correct: true}, {text: "Kucing", correct: false}, {text: "Kelinci", correct: false}] },
+                { img: "🍌", text: "Apa arti kosakata bahasa Inggris 'banana' dalam bahasa Indonesia?", options: [{text: "Pisang", correct: true}, {text: "Apel", correct: false}, {text: "Jeruk", correct: false}] },
+                { img: "🌙", text: "Apakah bahasa Inggris untuk bulan di malam hari?", options: [{text: "Moon", correct: true}, {text: "Sun", correct: false}, {text: "Star", correct: false}] }
             ]);
         }
 
         function startQuiz(category) {
             let pool = [];
-            if (category === 'angka') {
+            if (category === 'olimpiade_tk') {
+                pool = getOlimpiadeTKBank();
+                totalQuestionsCount = 10;
+            } else if (category === 'angka') {
                 pool = getAngkaBank();
                 totalQuestionsCount = 10;
             } else if (category === 'hitung') {
@@ -395,21 +362,19 @@
                 totalQuestionsCount = 10;
             } else if (category === 'tumbuhan') {
                 pool = getTumbuhanBank();
-                totalQuestionsCount = 10;
+                totalQuestionsCount = Math.min(getTumbuhanBank().length, 10);
             } else if (category === 'inggris') {
                 pool = getInggrisBank();
-                totalQuestionsCount = 10;
+                totalQuestionsCount = Math.min(getInggrisBank().length, 10);
             } else if (category === 'semua') {
                 let mixPool = [
-                    ...shuffleArray(getAngkaBank()).slice(0, 3),
-                    ...shuffleArray(getHitungBank()).slice(0, 3),
-                    ...shuffleArray(getBentukBank()).slice(0, 2),
-                    ...shuffleArray(getPolaBank()).slice(0, 2),
-                    ...shuffleArray(getKonsepBank()).slice(0, 2),
-                    ...shuffleArray(getMewarnaiBank()).slice(0, 2),
-                    ...shuffleArray(getHewanBank()).slice(0, 2),
-                    ...shuffleArray(getTumbuhanBank()).slice(0, 2),
-                    ...shuffleArray(getInggrisBank()).slice(0, 2)
+                    ...shuffleArray(getOlimpiadeTKBank()).slice(0, 2),
+                    ...shuffleArray(getAngkaBank()).slice(0, 2),
+                    ...shuffleArray(getHitungBank()).slice(0, 2),
+                    ...shuffleArray(getBentukBank()).slice(0, 1),
+                    ...shuffleArray(getPolaBank()).slice(0, 1),
+                    ...shuffleArray(getKonsepBank()).slice(0, 1),
+                    ...shuffleArray(getHewanBank()).slice(0, 1)
                 ];
                 pool = shuffleArray(mixPool);
                 totalQuestionsCount = pool.length;
@@ -446,7 +411,6 @@
             document.getElementById('feedback-container').classList.add('hidden');
             document.getElementById('next-btn').classList.add('hidden');
 
-            // Mengacak urutan opsi jawaban menggunakan properti objek 'correct' yang aman
             let shuffledOpts = shuffleArray(q.options);
 
             shuffledOpts.forEach((item, index) => {
@@ -505,7 +469,7 @@
                 playSound('correct');
                 document.getElementById('quiz-screen').classList.add('hidden');
                 document.getElementById('result-screen').classList.remove('hidden');
-                document.getElementById('final-score-text').innerText = `Hebat! Total skor akhirmu adalah ${score} dari 100. Semangat belajarnya ya!`;
+                document.getElementById('final-score-text').innerText = `Hebat! Total skor akhirmu adalah ${score} dari 100. Calon juara masa depan!`;
                 speakText("Luar biasa! Kamu telah menyelesaikan semua latihan hari ini.");
             }
         }
