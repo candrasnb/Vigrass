@@ -50,7 +50,7 @@
                     <span>🌟 Semua Materi (20 Soal Campuran Seru)</span>
                 </button>
                 <button onclick="playSound('click'); startQuiz('hitung_gambar')" class="w-full bg-gradient-to-r from-emerald-600 to-teal-700 text-white font-bold py-3.5 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
-                    <span>🖼️ Lomba Menghitung Gambar (Spesial Min 20 Soal)</span>
+                    <span>🖼️ Lomba Menghitung Gambar (Spesial 20 Soal Olimpiade)</span>
                 </button>
                 <button onclick="playSound('click'); startQuiz('olimpiade_tk')" class="w-full bg-gradient-to-r from-amber-500 to-orange-600 text-white font-bold py-3.5 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
                     <span>🏆 Latihan Spesial Olimpiade Matematika TK</span>
@@ -100,7 +100,7 @@
 
             <!-- Card Soal Bergambar -->
             <div id="question-card" class="bg-gradient-to-br from-indigo-50/90 to-purple-50/90 p-4 rounded-3xl border-2 border-indigo-200 mb-4 flex flex-col items-center justify-center text-center shadow-inner min-h-[130px]">
-                <div id="question-image" class="text-3xl md:text-4xl mb-2 animate-float tracking-widest break-all px-2"></div>
+                <div id="question-image" class="text-2xl md:text-3xl mb-2 animate-float tracking-widest break-all px-2"></div>
                 <h2 id="question-text" class="text-base md:text-lg font-bold text-slate-800 leading-snug">Pertanyaan...</h2>
             </div>
 
@@ -228,45 +228,131 @@
             return num.toString();
         }
 
-        // --- KHUSUS: LOMBA MENGHITUNG GAMBAR (Minimal 20 Soal Variatif) ---
+        // --- KHUSUS: LOMBA MENGHITUNG GAMBAR (Olimpiade TK - Tepat 20 Soal Variatif & Menantang) ---
         function getHitungGambarBank() {
-            let list = [];
-            let items = [
-                { icon: '🍎', name: 'apel merah' },
-                { icon: '⭐', name: 'bintang bersinar' },
-                { icon: '🎈', name: 'balon warna-warni' },
-                { icon: '🐱', name: 'anak kucing lucu' },
-                { icon: '⚽', name: 'bola sepak' },
-                { icon: '🚗', name: 'mobil mainan' },
-                { icon: '🍦', name: 'es krim manis' },
-                { icon: '🐟', name: 'ikan hias' },
-                { icon: '🐣', name: 'anak ayam' },
-                { icon: '🌸', name: 'bunga cantik' },
-                { icon: '🚀', name: 'roket luar angkasa' },
-                { icon: '🍭', name: 'permen lolipop' }
+            let list = [
+                {
+                    img: "🍎 🍌 🍎 🍊 🍎 🍇 🍎 🍓 🍎 🍐",
+                    text: "Tantangan Olimpiade: Di keranjang buah terdapat berbagai macam buah. Berapa jumlah khusus buah APEL MERAH (🍎) saja?",
+                    spokenText: "Berapa jumlah buah apel merah di dalam keranjang?",
+                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
+                },
+                {
+                    img: "⭐ 🌙 ⭐ ⭐ ☀️ ⭐ 🌙 ⭐ ⭐ ☁️",
+                    text: "Tantangan Olimpiade: Di langit malam ada bintang dan bulan. Berapa jumlah BINTANG (⭐) yang bersinar terang?",
+                    spokenText: "Berapa jumlah bintang di langit malam?",
+                    options: [{ text: "7 buah", correct: true }, { text: "6 buah", correct: false }, { text: "8 buah", correct: false }]
+                },
+                {
+                    img: "🐱 🐶 🐱 🐰 🐱 🐶 🐱 🐱 🦊 🐼",
+                    text: "Tantangan Olimpiade: Di taman bermain ada banyak hewan. Berapa jumlah anak KUCING (🐱) yang sedang bermain?",
+                    spokenText: "Berapa jumlah anak kucing di taman?",
+                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
+                },
+                {
+                    img: "🚗 🚲 🚗 🚗 🚌 🚗 🚲 🚗 🚗 🚚",
+                    text: "Tantangan Olimpiade: Di jalan raya ada berbagai kendaraan lewat. Berapa jumlah MOBIL (🚗) yang melintas?",
+                    spokenText: "Berapa jumlah mobil yang melintas?",
+                    options: [{ text: "6 buah", correct: true }, { text: "5 buah", correct: false }, { text: "7 buah", correct: false }]
+                },
+                {
+                    img: "🌸 🌻 🌸 🌹 🌸 🌻 🌸 🌸 🌷 🌼",
+                    text: "Tantangan Olimpiade: Di kebun bunga ibu tumbuh beraneka ragam tanaman. Berapa jumlah BUNGA MERAH MUDA (🌸)?",
+                    spokenText: "Berapa jumlah bunga merah muda di kebun?",
+                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
+                },
+                {
+                    img: "🎈 🔵 🎈 🎈 🔴 🎈 🔵 🎈 🎈 🟢",
+                    text: "Tantangan Olimpiade: Paman menjual balon warna-warni. Berapa jumlah BALON MERAH (🎈) yang ditiup?",
+                    spokenText: "Berapa jumlah balon merah?",
+                    options: [{ text: "6 buah", correct: true }, { text: "5 buah", correct: false }, { text: "7 buah", correct: false }]
+                },
+                {
+                    img: "🐟 🐠 🦐 🐟 🦀 🐟 🐠 🐟 🐟 🐙",
+                    text: "Tantangan Olimpiade: Di dalam akuarium besar terdapat banyak hewan air. Berapa jumlah IKAN (🐟) berukuran sedang?",
+                    spokenText: "Berapa jumlah ikan di akuarium?",
+                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
+                },
+                {
+                    img: "🍬 🍫 🍭 🍬 🍬 🍫 🍭 🍬 🍬 🍪",
+                    text: "Tantangan Olimpiade: Adika menyimpan berbagai permen manis. Berapa jumlah PERMEN KOTAK (🍬) milik Adika?",
+                    spokenText: "Berapa jumlah permen kotak?",
+                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
+                },
+                {
+                    img: "🐣 🐥 🐔 🐣 🐥 🐣 🐔 🐣 🐣 🦃",
+                    text: "Tantangan Olimpiade: Di peternakan kakek ada ayam dan anak ayam. Berapa jumlah ANAK AYAM KECIL (🐣)?",
+                    spokenText: "Berapa jumlah anak ayam kecil?",
+                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
+                },
+                {
+                    img: "⚽ 🏀 🎾 ⚽ 🏐 ⚽ 🎾 ⚽ ⚽ 🏈",
+                    text: "Tantangan Olimpiade: Di gudang sekolah tersimpan berbagai bola olahraga. Berapa jumlah BOLA SEPAK (⚽)?",
+                    spokenText: "Berapa jumlah bola sepak?",
+                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
+                },
+                {
+                    img: "🍎 🍐 🍎 🍊 🍎 🍋 🍎 🍌 🍎 🍎",
+                    text: "Tantangan Olimpiade: Di dahan pohon kebun kakek tumbuh berbagai buah. Hitunglah berapa jumlah buah APEL (🍎) saja di pohon tersebut?",
+                    spokenText: "Berapa jumlah buah apel di pohon?",
+                    options: [{ text: "6 buah", correct: true }, { text: "5 buah", correct: false }, { text: "7 buah", correct: false }]
+                },
+                {
+                    img: "🍊 🍎 🍊 🍌 🍊 🍇 🍊 🍐 🍊 🍊",
+                    text: "Tantangan Olimpiade: Di keranjang pasar terdapat campuran buah segar. Hitunglah berapa jumlah buah JERUK (🍊) saja?",
+                    spokenText: "Berapa jumlah buah jeruk di keranjang?",
+                    options: [{ text: "6 buah", correct: true }, { text: "5 buah", correct: false }, { text: "7 buah", correct: false }]
+                },
+                {
+                    img: "⭐ 🌙 ⭐ ☀️ ⭐ ☁️ ⭐ 🌙 ⭐ ⭐",
+                    text: "Tantangan Olimpiade: Perhatikan gambar benda langit berikut. Hitunglah khusus jumlah BINTANG EMAS (⭐) yang muncul!",
+                    spokenText: "Berapa jumlah bintang emas?",
+                    options: [{ text: "7 buah", correct: true }, { text: "6 buah", correct: false }, { text: "8 buah", correct: false }]
+                },
+                {
+                    img: "🚗 🚕 🚗 🚙 🚗 🏎️ 🚗 🚗 🚓",
+                    text: "Tantangan Olimpiade: Di tempat parkir mall berjejer mobil. Hitunglah berapa jumlah MOBIL BIASA (🚗) yang berwarna merah?",
+                    spokenText: "Berapa jumlah mobil biasa?",
+                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
+                },
+                {
+                    img: "🌸 🌼 🌸 🌻 🌸 🌷 🌸 🌸 🌹",
+                    text: "Tantangan Olimpiade: Di taman bunga sekolah terdapat beraneka ragam flora. Berapa jumlah BUNGA SAKURA (🌸) pada barisan itu?",
+                    spokenText: "Berapa jumlah bunga sakura?",
+                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
+                },
+                {
+                    img: "🦋 🐝 🦋 🐞 🦋 🐛 🦋 🦋 🦟",
+                    text: "Tantangan Olimpiade: Di halaman belakang rumah ada serangga terbang. Hitunglah khusus jumlah KUPU-KUPU (🦋)?",
+                    spokenText: "Berapa jumlah kupu-kupu?",
+                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
+                },
+                {
+                    img: "🐟 🐬 🐟 🐳 🐟 🦈 🐟 🐟 🐋",
+                    text: "Tantangan Olimpiade: Di laut lepas terlihat banyak ikan dan mamalia air. Berapa jumlah IKAN KECIL (🐟) pada kelompok tersebut?",
+                    spokenText: "Berapa jumlah ikan kecil?",
+                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
+                },
+                {
+                    img: "🎈 🎁 🎈 🎀 🎈 🧸 🎈 🎈 🎊",
+                    text: "Tantangan Olimpiade: Di meja pesta ulang tahun ada dekorasi meriah. Hitunglah berapa jumlah BALON (🎈) yang tergantung?",
+                    spokenText: "Berapa jumlah balon pesta?",
+                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
+                },
+                {
+                    img: "🍦 🍧 🍦 🍨 🍦 🧁 🍦 🍦 🍰",
+                    text: "Tantangan Olimpiade: Di etalase toko kue ada berbagai hidangan manis. Hitunglah berapa jumlah ES KRIM CORONG (🍦) saja?",
+                    spokenText: "Berapa jumlah es krim corong?",
+                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
+                },
+                {
+                    img: "⭐ 🌟 ⭐ 🌟 ⭐ ✨ ⭐ ⭐ 🌟",
+                    text: "Tantangan Olimpiade: Perhatikan taburan stiker di buku tugas. Berapa jumlah khusus BINTANG KECIL (⭐) datar di antara stiker berkilau?",
+                    spokenText: "Berapa jumlah bintang kecil?",
+                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
+                }
             ];
 
-            for (let i = 1; i <= 30; i++) {
-                let obj = items[i % items.length];
-                let count = (i % 12) + 3;
-                let visualString = Array(count).fill(obj.icon).join(' ');
-                
-                let correctVal = count;
-                let wrong1 = correctVal === 15 ? 12 : correctVal + 2;
-                let wrong2 = Math.max(1, correctVal - 2);
-                if (wrong1 === correctVal) wrong1 = correctVal + 1;
-
-                list.push({
-                    img: visualString,
-                    text: `Lomba Cepat Tepat: Berapakah jumlah total gambar ${obj.name} di atas?`,
-                    spokenText: `Berapa jumlah gambar ${obj.name} di atas?`,
-                    options: [
-                        { text: `${correctVal} buah`, correct: true },
-                        { text: `${wrong1} buah`, correct: false },
-                        { text: `${wrong2} buah`, correct: false }
-                    ]
-                });
-            }
             return shuffleArray(list);
         }
 
