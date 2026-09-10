@@ -43,14 +43,14 @@
         <!-- Setup Screen -->
         <div id="setup-screen" class="space-y-2.5 max-h-[72vh] overflow-y-auto pr-1">
             <div class="bg-indigo-50 p-3 rounded-2xl border-2 border-indigo-100 text-center shadow-inner">
-                <p class="text-indigo-900 font-bold text-sm">Pilih kategori latihan:</p>
+                <p class="text-indigo-900 font-bold text-sm">Pilih kategori latihan (Min 10 Soal per Sesi):</p>
             </div>
             <div class="grid grid-cols-1 gap-2.5">
                 <button onclick="playSound('click'); startQuiz('semua')" class="w-full bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white font-bold py-3.5 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
                     <span>🌟 Semua Materi (20 Soal Campuran Seru)</span>
                 </button>
                 <button onclick="playSound('click'); startQuiz('hitung_gambar')" class="w-full bg-gradient-to-r from-emerald-600 to-teal-700 text-white font-bold py-3.5 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
-                    <span>🖼️ Lomba Menghitung Gambar (Spesial 20 Soal Olimpiade)</span>
+                    <span>🖼️ Lomba Menghitung Gambar (20 Soal Olimpiade)</span>
                 </button>
                 <button onclick="playSound('click'); startQuiz('olimpiade_tk')" class="w-full bg-gradient-to-r from-amber-500 to-orange-600 text-white font-bold py-3.5 px-5 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 text-left flex justify-between items-center text-sm md:text-base">
                     <span>🏆 Latihan Spesial Olimpiade Matematika TK</span>
@@ -228,197 +228,35 @@
             return num.toString();
         }
 
-        // --- KHUSUS: LOMBA MENGHITUNG GAMBAR (Olimpiade TK - Tepat 20 Soal Variatif & Menantang) ---
+        // --- 1. LOMBA MENGHITUNG GAMBAR (20 Soal Olimpiade) ---
         function getHitungGambarBank() {
-            let list = [
-                {
-                    img: "🍎 🍌 🍎 🍊 🍎 🍇 🍎 🍓 🍎 🍐",
-                    text: "Tantangan Olimpiade: Di keranjang buah terdapat berbagai macam buah. Berapa jumlah khusus buah APEL MERAH (🍎) saja?",
-                    spokenText: "Berapa jumlah buah apel merah di dalam keranjang?",
-                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
-                },
-                {
-                    img: "⭐ 🌙 ⭐ ⭐ ☀️ ⭐ 🌙 ⭐ ⭐ ☁️",
-                    text: "Tantangan Olimpiade: Di langit malam ada bintang dan bulan. Berapa jumlah BINTANG (⭐) yang bersinar terang?",
-                    spokenText: "Berapa jumlah bintang di langit malam?",
-                    options: [{ text: "7 buah", correct: true }, { text: "6 buah", correct: false }, { text: "8 buah", correct: false }]
-                },
-                {
-                    img: "🐱 🐶 🐱 🐰 🐱 🐶 🐱 🐱 🦊 🐼",
-                    text: "Tantangan Olimpiade: Di taman bermain ada banyak hewan. Berapa jumlah anak KUCING (🐱) yang sedang bermain?",
-                    spokenText: "Berapa jumlah anak kucing di taman?",
-                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
-                },
-                {
-                    img: "🚗 🚲 🚗 🚗 🚌 🚗 🚲 🚗 🚗 🚚",
-                    text: "Tantangan Olimpiade: Di jalan raya ada berbagai kendaraan lewat. Berapa jumlah MOBIL (🚗) yang melintas?",
-                    spokenText: "Berapa jumlah mobil yang melintas?",
-                    options: [{ text: "6 buah", correct: true }, { text: "5 buah", correct: false }, { text: "7 buah", correct: false }]
-                },
-                {
-                    img: "🌸 🌻 🌸 🌹 🌸 🌻 🌸 🌸 🌷 🌼",
-                    text: "Tantangan Olimpiade: Di kebun bunga ibu tumbuh beraneka ragam tanaman. Berapa jumlah BUNGA MERAH MUDA (🌸)?",
-                    spokenText: "Berapa jumlah bunga merah muda di kebun?",
-                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
-                },
-                {
-                    img: "🎈 🔵 🎈 🎈 🔴 🎈 🔵 🎈 🎈 🟢",
-                    text: "Tantangan Olimpiade: Paman menjual balon warna-warni. Berapa jumlah BALON MERAH (🎈) yang ditiup?",
-                    spokenText: "Berapa jumlah balon merah?",
-                    options: [{ text: "6 buah", correct: true }, { text: "5 buah", correct: false }, { text: "7 buah", correct: false }]
-                },
-                {
-                    img: "🐟 🐠 🦐 🐟 🦀 🐟 🐠 🐟 🐟 🐙",
-                    text: "Tantangan Olimpiade: Di dalam akuarium besar terdapat banyak hewan air. Berapa jumlah IKAN (🐟) berukuran sedang?",
-                    spokenText: "Berapa jumlah ikan di akuarium?",
-                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
-                },
-                {
-                    img: "🍬 🍫 🍭 🍬 🍬 🍫 🍭 🍬 🍬 🍪",
-                    text: "Tantangan Olimpiade: Adika menyimpan berbagai permen manis. Berapa jumlah PERMEN KOTAK (🍬) milik Adika?",
-                    spokenText: "Berapa jumlah permen kotak?",
-                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
-                },
-                {
-                    img: "🐣 🐥 🐔 🐣 🐥 🐣 🐔 🐣 🐣 🦃",
-                    text: "Tantangan Olimpiade: Di peternakan kakek ada ayam dan anak ayam. Berapa jumlah ANAK AYAM KECIL (🐣)?",
-                    spokenText: "Berapa jumlah anak ayam kecil?",
-                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
-                },
-                {
-                    img: "⚽ 🏀 🎾 ⚽ 🏐 ⚽ 🎾 ⚽ ⚽ 🏈",
-                    text: "Tantangan Olimpiade: Di gudang sekolah tersimpan berbagai bola olahraga. Berapa jumlah BOLA SEPAK (⚽)?",
-                    spokenText: "Berapa jumlah bola sepak?",
-                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
-                },
-                {
-                    img: "🍎 🍐 🍎 🍊 🍎 🍋 🍎 🍌 🍎 🍎",
-                    text: "Tantangan Olimpiade: Di dahan pohon kebun kakek tumbuh berbagai buah. Hitunglah berapa jumlah buah APEL (🍎) saja di pohon tersebut?",
-                    spokenText: "Berapa jumlah buah apel di pohon?",
-                    options: [{ text: "6 buah", correct: true }, { text: "5 buah", correct: false }, { text: "7 buah", correct: false }]
-                },
-                {
-                    img: "🍊 🍎 🍊 🍌 🍊 🍇 🍊 🍐 🍊 🍊",
-                    text: "Tantangan Olimpiade: Di keranjang pasar terdapat campuran buah segar. Hitunglah berapa jumlah buah JERUK (🍊) saja?",
-                    spokenText: "Berapa jumlah buah jeruk di keranjang?",
-                    options: [{ text: "6 buah", correct: true }, { text: "5 buah", correct: false }, { text: "7 buah", correct: false }]
-                },
-                {
-                    img: "⭐ 🌙 ⭐ ☀️ ⭐ ☁️ ⭐ 🌙 ⭐ ⭐",
-                    text: "Tantangan Olimpiade: Perhatikan gambar benda langit berikut. Hitunglah khusus jumlah BINTANG EMAS (⭐) yang muncul!",
-                    spokenText: "Berapa jumlah bintang emas?",
-                    options: [{ text: "7 buah", correct: true }, { text: "6 buah", correct: false }, { text: "8 buah", correct: false }]
-                },
-                {
-                    img: "🚗 🚕 🚗 🚙 🚗 🏎️ 🚗 🚗 🚓",
-                    text: "Tantangan Olimpiade: Di tempat parkir mall berjejer mobil. Hitunglah berapa jumlah MOBIL BIASA (🚗) yang berwarna merah?",
-                    spokenText: "Berapa jumlah mobil biasa?",
-                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
-                },
-                {
-                    img: "🌸 🌼 🌸 🌻 🌸 🌷 🌸 🌸 🌹",
-                    text: "Tantangan Olimpiade: Di taman bunga sekolah terdapat beraneka ragam flora. Berapa jumlah BUNGA SAKURA (🌸) pada barisan itu?",
-                    spokenText: "Berapa jumlah bunga sakura?",
-                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
-                },
-                {
-                    img: "🦋 🐝 🦋 🐞 🦋 🐛 🦋 🦋 🦟",
-                    text: "Tantangan Olimpiade: Di halaman belakang rumah ada serangga terbang. Hitunglah khusus jumlah KUPU-KUPU (🦋)?",
-                    spokenText: "Berapa jumlah kupu-kupu?",
-                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
-                },
-                {
-                    img: "🐟 🐬 🐟 🐳 🐟 🦈 🐟 🐟 🐋",
-                    text: "Tantangan Olimpiade: Di laut lepas terlihat banyak ikan dan mamalia air. Berapa jumlah IKAN KECIL (🐟) pada kelompok tersebut?",
-                    spokenText: "Berapa jumlah ikan kecil?",
-                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
-                },
-                {
-                    img: "🎈 🎁 🎈 🎀 🎈 🧸 🎈 🎈 🎊",
-                    text: "Tantangan Olimpiade: Di meja pesta ulang tahun ada dekorasi meriah. Hitunglah berapa jumlah BALON (🎈) yang tergantung?",
-                    spokenText: "Berapa jumlah balon pesta?",
-                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
-                },
-                {
-                    img: "🍦 🍧 🍦 🍨 🍦 🧁 🍦 🍦 🍰",
-                    text: "Tantangan Olimpiade: Di etalase toko kue ada berbagai hidangan manis. Hitunglah berapa jumlah ES KRIM CORONG (🍦) saja?",
-                    spokenText: "Berapa jumlah es krim corong?",
-                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
-                },
-                {
-                    img: "⭐ 🌟 ⭐ 🌟 ⭐ ✨ ⭐ ⭐ 🌟",
-                    text: "Tantangan Olimpiade: Perhatikan taburan stiker di buku tugas. Berapa jumlah khusus BINTANG KECIL (⭐) datar di antara stiker berkilau?",
-                    spokenText: "Berapa jumlah bintang kecil?",
-                    options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }]
-                }
-            ];
-
-            return shuffleArray(list);
+            return shuffleArray([
+                { img: "🍎 🍌 🍎 🍊 🍎 🍇 🍎 🍓 🍎 🍐", text: "Di keranjang buah terdapat berbagai macam buah. Berapa jumlah khusus buah APEL MERAH (🍎) saja?", spokenText: "Berapa jumlah buah apel merah di dalam keranjang?", options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }] },
+                { img: "⭐ 🌙 ⭐ ⭐ ☀️ ⭐ 🌙 ⭐ ⭐ ☁️", text: "Di langit malam ada bintang dan bulan. Berapa jumlah BINTANG (⭐) yang bersinar terang?", spokenText: "Berapa jumlah bintang di langit malam?", options: [{ text: "7 buah", correct: true }, { text: "6 buah", correct: false }, { text: "8 buah", correct: false }] },
+                { img: "🐱 🐶 🐱 🐰 🐱 🐶 🐱 🐱 🦊 🐼", text: "Di taman bermain ada banyak hewan. Berapa jumlah anak KUCING (🐱) yang sedang bermain?", spokenText: "Berapa jumlah anak kucing di taman?", options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }] },
+                { img: "🚗 🚲 🚗 🚗 🚌 🚗 🚲 🚗 🚗 🚚", text: "Di jalan raya ada berbagai kendaraan lewat. Berapa jumlah MOBIL (🚗) yang melintas?", spokenText: "Berapa jumlah mobil yang melintas?", options: [{ text: "6 buah", correct: true }, { text: "5 buah", correct: false }, { text: "7 buah", correct: false }] },
+                { img: "🌸 🌻 🌸 🌹 🌸 🌻 🌸 🌸 🌷 🌼", text: "Di kebun bunga ibu tumbuh beraneka ragam tanaman. Berapa jumlah BUNGA MERAH MUDA (🌸)?", spokenText: "Berapa jumlah bunga merah muda di kebun?", options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }] },
+                { img: "🎈 🔵 🎈 🎈 🔴 🎈 🔵 🎈 🎈 🟢", text: "Paman menjual balon warna-warni. Berapa jumlah BALON MERAH (🎈) yang ditiup?", spokenText: "Berapa jumlah balon merah?", options: [{ text: "6 buah", correct: true }, { text: "5 buah", correct: false }, { text: "7 buah", correct: false }] },
+                { img: "🐟 🐠 🦐 🐟 🦀 🐟 🐠 🐟 🐟 🐙", text: "Di dalam akuarium besar terdapat banyak hewan air. Berapa jumlah IKAN (🐟) berukuran sedang?", spokenText: "Berapa jumlah ikan di akuarium?", options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }] },
+                { img: "🍬 🍫 🍭 🍬 🍬 🍫 🍭 🍬 🍬 🍪", text: "Adika menyimpan berbagai permen manis. Berapa jumlah PERMEN KOTAK (🍬) milik Adika?", spokenText: "Berapa jumlah permen kotak?", options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }] },
+                { img: "🐣 🐥 🐔 🐣 🐥 🐣 🐔 🐣 🐣 🦃", text: "Di peternakan kakek ada ayam dan anak ayam. Berapa jumlah ANAK AYAM KECIL (🐣)?", spokenText: "Berapa jumlah anak ayam kecil?", options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }] },
+                { img: "⚽ 🏀 🎾 ⚽ 🏐 ⚽ 🎾 ⚽ ⚽ 🏈", text: "Di gudang sekolah tersimpan berbagai bola olahraga. Berapa jumlah BOLA SEPAK (⚽)?", spokenText: "Berapa jumlah bola sepak?", options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }] },
+                { img: "🍎 🍐 🍎 🍊 🍎 🍋 🍎 🍌 🍎 🍎", text: "Di dahan pohon kebun kakek tumbuh berbagai buah. Hitunglah berapa jumlah buah APEL (🍎) saja di pohon tersebut?", spokenText: "Berapa jumlah buah apel di pohon?", options: [{ text: "6 buah", correct: true }, { text: "5 buah", correct: false }, { text: "7 buah", correct: false }] },
+                { img: "🍊 🍎 🍊 🍌 🍊 🍇 🍊 🍐 🍊 🍊", text: "Di keranjang pasar terdapat campuran buah segar. Hitunglah berapa jumlah buah JERUK (🍊) saja?", spokenText: "Berapa jumlah buah jeruk di keranjang?", options: [{ text: "6 buah", correct: true }, { text: "5 buah", correct: false }, { text: "7 buah", correct: false }] },
+                { img: "⭐ 🌙 ⭐ ☀️ ⭐ ☁️ ⭐ 🌙 ⭐ ⭐", text: "Perhatikan gambar benda langit berikut. Hitunglah khusus jumlah BINTANG EMAS (⭐) yang muncul!", spokenText: "Berapa jumlah bintang emas?", options: [{ text: "7 buah", correct: true }, { text: "6 buah", correct: false }, { text: "8 buah", correct: false }] },
+                { img: "🚗 🚕 🚗 🚙 🚗 🏎️ 🚗 🚗 🚓", text: "Di tempat parkir mall berjejer mobil. Hitunglah berapa jumlah MOBIL BIASA (🚗) yang berwarna merah?", spokenText: "Berapa jumlah mobil biasa?", options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }] },
+                { img: "🌸 🌼 🌸 🌻 🌸 🌷 🌸 🌸 🌹", text: "Di taman bunga sekolah terdapat beraneka ragam flora. Berapa jumlah BUNGA SAKURA (🌸) pada barisan itu?", spokenText: "Berapa jumlah bunga sakura?", options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }] },
+                { img: "🦋 🐝 🦋 🐞 🦋 🐛 🦋 🦋 🦟", text: "Di halaman belakang rumah ada serangga terbang. Hitunglah khusus jumlah KUPU-KUPU (🦋)?", spokenText: "Berapa jumlah kupu-kupu?", options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }] },
+                { img: "🐟 🐬 🐟 🐳 🐟 🦈 🐟 🐟 🐋", text: "Di laut lepas terlihat banyak ikan dan mamalia air. Berapa jumlah IKAN KECIL (🐟) pada kelompok tersebut?", spokenText: "Berapa jumlah ikan kecil?", options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }] },
+                { img: "🎈 🎁 🎈 🎀 🎈 🧸 🎈 🎈 🎊", text: "Di meja pesta ulang tahun ada dekorasi meriah. Hitunglah berapa jumlah BALON (🎈) yang tergantung?", spokenText: "Berapa jumlah balon pesta?", options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }] },
+                { img: "🍦 🍧 🍦 🍨 🍦 🧁 🍦 🍦 🍰", text: "Di etalase toko kue ada berbagai hidangan manis. Hitunglah berapa jumlah ES KRIM CORONG (🍦) saja?", spokenText: "Berapa jumlah es krim corong?", options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }] },
+                { img: "⭐ 🌟 ⭐ 🌟 ⭐ ✨ ⭐ ⭐ 🌟", text: "Perhatikan taburan stiker di buku tugas. Berapa jumlah khusus BINTANG KECIL (⭐) datar di antara stiker berkilau?", spokenText: "Berapa jumlah bintang kecil?", options: [{ text: "5 buah", correct: true }, { text: "4 buah", correct: false }, { text: "6 buah", correct: false }] }
+            ]);
         }
 
-        // --- BANK SOAL: MATH ENGLISH (TENS & HUNDREDS) ---
-        function getMathEnglishBank() {
-            let list = [];
-            let icons = ['🔢', '➕', '➖', '🧮', '⭐', '🎈'];
-            let baseTensOrHundreds = [30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170];
-            let addVals = [10, 20, 30, 40, 50];
-
-            for(let i = 0; i < baseTensOrHundreds.length; i++) {
-                for(let j = 0; j < addVals.length; j++) {
-                    let a = baseTensOrHundreds[i];
-                    let b = addVals[j];
-                    let sum = a + b;
-                    
-                    let textDisplay = `${a} + ${b} = ...`;
-                    let textSpoken = `${numberToEnglish(a)} plus ${numberToEnglish(b)} equals?`;
-                    let correctStr = numberToEnglish(sum);
-                    let w1 = numberToEnglish(sum + 10);
-                    let w2 = numberToEnglish(Math.max(10, sum - 10));
-                    if (w1 === correctStr) w1 = numberToEnglish(sum + 20);
-
-                    list.push({
-                        img: icons[(a + b) % icons.length],
-                        text: textDisplay,
-                        spokenText: textSpoken,
-                        isEnglish: true,
-                        options: [
-                            { text: `${numberToEnglish(sum)} (${sum})`, correct: true },
-                            { text: `${w1} (${sum + 10})`, correct: false },
-                            { text: `${w2} (${Math.max(10, sum - 10)})`, correct: false }
-                        ]
-                    });
-                }
-            }
-
-            list.push({
-                img: "🧮",
-                text: `170 + 40 = ...`,
-                spokenText: `one hundred seventy plus forty equals?`,
-                isEnglish: true,
-                options: [
-                    { text: `two hundred ten (210)`, correct: true },
-                    { text: `two hundred (200)`, correct: false },
-                    { text: `two hundred twenty (220)`, correct: false }
-                ]
-            });
-            list.push({
-                img: "🔢",
-                text: `150 + 50 = ...`,
-                spokenText: `one hundred fifty plus fifty equals?`,
-                isEnglish: true,
-                options: [
-                    { text: `two hundred (200)`, correct: true },
-                    { text: `one hundred ninety (190)`, correct: false },
-                    { text: `two hundred ten (210)`, correct: false }
-                ]
-            });
-
-            return shuffleArray(list);
-        }
-
-        // --- BANK SOAL: OLIMPIADE TK ---
+        // --- 2. OLIMPIADE TK (15+ Soal) ---
         function getOlimpiadeTKBank() {
-            let base = [
+            return shuffleArray([
                 { img: "🧠", text: "Ibu membeli 6 buah mangga. Sebanyak 2 mangga diberikan kepada bibi, lalu paman datang membawa 3 mangga lagi. Berapa jumlah mangga sekarang?", options: [{text: "7 buah", correct: true}, {text: "6 buah", correct: false}, {text: "8 buah", correct: false}] },
                 { img: "🔢", text: "Perhatikan deret bilangan loncat berikut: 3, 6, 9, 12, ... Berapakah angka berikutnya?", options: [{text: "15", correct: true}, {text: "14", correct: false}, {text: "16", correct: false}] },
                 { img: "🧩", text: "Dalam sebuah barisan mainan, boneka beruang berada di urutan ke-4 dari depan dan urutan ke-4 dari belakang. Berapa jumlah total mainan dalam barisan itu?", options: [{text: "7 mainan", correct: true}, {text: "8 mainan", correct: false}, {text: "6 mainan", correct: false}] },
@@ -428,35 +266,20 @@
                 { img: "🔄", text: "Lanjutkan pola urutan bentuk berikut: 🟢 🟡 🔴 🟢 🟡 ...", options: [{text: "🔴", correct: true}, {text: "🟢", correct: false}, {text: "🟡", correct: false}] },
                 { img: "⚖️", text: "Di antara benda-benda berikut, manakah yang paling ringan dan mudah diterbangkan angin?", options: [{text: "Sehelai Kertas", correct: true}, {text: "Batu Bata", correct: false}, {text: "Kamus Tebal", correct: false}] },
                 { img: "⏱️", text: "Waktu dalam sehari saat bulan dan bintang mulai bermunculan di langit malam disebut...", options: [{text: "Malam hari", correct: true}, {text: "Siang hari", correct: false}, {text: "Pagi hari", correct: false}] },
-                { img: "🎯", text: "Angka berapakah yang nilainya berada di tengah-tengah antara angka 4 dan angka 6?", options: [{text: "5", correct: true}, {text: "3", correct: false}, {text: "7", correct: false}] }
-            ];
-            let expanded = [...base];
-            let extraTopics = [
-                {i:"🏆", t:"Andi punya 8 kelereng, Budi punya 5 kelereng. Berapa selisih kelereng mereka?", o:[{text:"3 kelereng", c:true},{text:"4 kelereng", c:false},{text:"2 kelereng", c:false}]},
-                {i:"🐱", t:"Ada 4 ekor kucing di teras, datang lagi 5 ekor kucing. Berapa jumlah kucing sekarang?", o:[{text:"9 ekor", c:true},{text:"8 ekor", c:false},{text:"10 ekor", c:false}]},
-                {i:"🚗", t:"Di parkiran ada 10 mobil, pergi 3 mobil. Berapa sisa mobil di parkiran?", o:[{text:"7 mobil", c:true},{text:"6 mobil", c:false},{text:"8 mobil", c:false}]}
-            ];
-            for(let k=0; k<10; k++) {
-                extraTopics.forEach((item) => {
-                    expanded.push({
-                        img: item.i,
-                        text: item.t,
-                        options: [
-                            { text: item.o[0].text, correct: item.o[0].c },
-                            { text: item.o[1].text, correct: item.o[1].c },
-                            { text: item.o[2].text, correct: item.o[2].c }
-                        ]
-                    });
-                });
-            }
-            return shuffleArray(expanded);
+                { img: "🎯", text: "Angka berapakah yang nilainya berada di tengah-tengah antara angka 4 dan angka 6?", options: [{text: "5", correct: true}, {text: "3", correct: false}, {text: "7", correct: false}] },
+                { img: "🏆", text: "Andi punya 8 kelereng, Budi punya 5 kelereng. Berapa selisih kelereng mereka?", options: [{text: "3 kelereng", correct: true}, {text: "4 kelereng", correct: false}, {text: "2 kelereng", correct: false}] },
+                { img: "🐱", text: "Ada 4 ekor kucing di teras, datang lagi 5 ekor kucing. Berapa jumlah kucing sekarang?", options: [{text: "9 ekor", correct: true}, {text: "8 ekor", correct: false}, {text: "10 ekor", correct: false}] },
+                { img: "🚗", text: "Di parkiran ada 10 mobil, pergi 3 mobil. Berapa sisa mobil di parkiran?", options: [{text: "7 mobil", correct: true}, {text: "6 mobil", correct: false}, {text: "8 mobil", correct: false}] },
+                { img: "🍎", text: "Dalam keranjang ada 15 buah apel, dimakan keluarga 6 buah. Berapa sisa apel di keranjang?", options: [{text: "9 buah", correct: true}, {text: "8 buah", correct: false}, {text: "10 buah", correct: false}] },
+                { img: "🎈", text: "Rani meniup 10 balon, lalu 4 balon meletus. Berapa sisa balon Rani yang masih utuh?", options: [{text: "6 balon", correct: true}, {text: "5 balon", correct: false}, {text: "7 balon", correct: false}] }
+            ]);
         }
 
-        // --- BANK SOAL: ANGKA & HITUNG BENDA ---
+        // --- 3. ANGKA & HITUNG BENDA (15+ Soal) ---
         function getAngkaBank() {
             let list = [];
             let icons = ['🌟', '🍎', '🚗', '🎈', '🐶', '⚽', '🐱', '🍌', '🌸', '🐟'];
-            for (let i = 1; i <= 50; i++) {
+            for (let i = 1; i <= 20; i++) {
                 let icon = icons[(i * 3) % icons.length];
                 let count = (i % 12) + 1;
                 let stringBenda = Array(count).fill(icon).join(' ');
@@ -477,84 +300,159 @@
             return shuffleArray(list);
         }
 
-        // --- BANK SOAL: HITUNG SERU ---
+        // --- 4. HITUNG SERU (15+ Soal) ---
         function getHitungBank() {
             let list = [];
-            for (let a = 1; a <= 10; a++) {
-                for (let b = 1; b <= 10; b++) {
-                    let hasil = a + b;
-                    let w1 = hasil + 1;
-                    let w2 = Math.max(1, hasil - 2);
-                    if (w1 === w2) w2 = hasil + 2;
-                    list.push({ 
-                        img: "➕", 
-                        text: `Berapakah hasil penjumlahan dari ${a} ditambah ${b}?`, 
-                        options: [
-                            { text: hasil.toString(), correct: true },
-                            { text: w1.toString(), correct: false },
-                            { text: w2.toString(), correct: false }
-                        ] 
-                    });
-                }
-            }
+            let soalHitung = [
+                {a: 3, b: 4}, {a: 5, b: 2}, {a: 6, b: 3}, {a: 7, b: 4}, {a: 8, b: 2},
+                {a: 5, b: 5}, {a: 9, b: 1}, {a: 4, b: 4}, {a: 6, b: 5}, {a: 7, b: 3},
+                {a: 8, b: 4}, {a: 3, b: 6}, {a: 5, b: 4}, {a: 2, b: 7}, {a: 6, b: 2}
+            ];
+            soalHitung.forEach(item => {
+                let hasil = item.a + item.b;
+                list.push({
+                    img: "➕",
+                    text: `Berapakah hasil penjumlahan dari ${item.a} ditambah ${item.b}?`,
+                    options: [
+                        { text: hasil.toString(), correct: true },
+                        { text: (hasil + 1).toString(), correct: false },
+                        { text: Math.max(1, hasil - 1).toString(), correct: false }
+                    ]
+                });
+            });
             return shuffleArray(list);
         }
 
+        // --- 5. MATH ENGLISH (15+ Soal) ---
+        function getMathEnglishBank() {
+            return shuffleArray([
+                { img: "🔢", text: "30 + 10 = ...", spokenText: "thirty plus ten equals?", isEnglish: true, options: [{ text: "forty (40)", correct: true }, { text: "fifty (50)", correct: false }, { text: "thirty (30)", correct: false }] },
+                { img: "➕", text: "50 + 20 = ...", spokenText: "fifty plus twenty equals?", isEnglish: true, options: [{ text: "seventy (70)", correct: true }, { text: "sixty (60)", correct: false }, { text: "eighty (80)", correct: false }] },
+                { img: "🧮", text: "100 + 50 = ...", spokenText: "one hundred plus fifty equals?", isEnglish: true, options: [{ text: "one hundred fifty (150)", correct: true }, { text: "one hundred twenty (120)", correct: false }, { text: "two hundred (200)", correct: false }] },
+                { img: "🔢", text: "40 + 30 = ...", spokenText: "forty plus thirty equals?", isEnglish: true, options: [{ text: "seventy (70)", correct: true }, { text: "sixty (60)", correct: false }, { text: "eighty (80)", correct: false }] },
+                { img: "➕", text: "60 + 20 = ...", spokenText: "sixty plus twenty equals?", isEnglish: true, options: [{ text: "eighty (80)", correct: true }, { text: "seventy (70)", correct: false }, { text: "ninety (90)", correct: false }] },
+                { img: "🧮", text: "80 + 10 = ...", spokenText: "eighty plus ten equals?", isEnglish: true, options: [{ text: "ninety (90)", correct: true }, { text: "seventy (70)", correct: false }, { text: "one hundred (100)", correct: false }] },
+                { img: "🔢", text: "20 + 20 = ...", spokenText: "twenty plus twenty equals?", isEnglish: true, options: [{ text: "forty (40)", correct: true }, { text: "thirty (30)", correct: false }, { text: "fifty (50)", correct: false }] },
+                { img: "➕", text: "70 + 30 = ...", spokenText: "seventy plus thirty equals?", isEnglish: true, options: [{ text: "one hundred (100)", correct: true }, { text: "ninety (90)", correct: false }, { text: "eighty (80)", correct: false }] },
+                { img: "🧮", text: "110 + 40 = ...", spokenText: "one hundred ten plus forty equals?", isEnglish: true, options: [{ text: "one hundred fifty (150)", correct: true }, { text: "one hundred forty (140)", correct: false }, { text: "one hundred sixty (160)", correct: false }] },
+                { img: "🔢", text: "90 + 10 = ...", spokenText: "ninety plus ten equals?", isEnglish: true, options: [{ text: "one hundred (100)", correct: true }, { text: "ninety (90)", correct: false }, { text: "eighty (80)", correct: false }] },
+                { img: "➕", text: "120 + 30 = ...", spokenText: "one hundred twenty plus thirty equals?", isEnglish: true, options: [{ text: "one hundred fifty (150)", correct: true }, { text: "one hundred forty (140)", correct: false }, { text: "one hundred sixty (160)", correct: false }] },
+                { img: "🧮", text: "150 + 50 = ...", spokenText: "one hundred fifty plus fifty equals?", isEnglish: true, options: [{ text: "two hundred (200)", correct: true }, { text: "one hundred ninety (190)", correct: false }, { text: "two hundred ten (210)", correct: false }] },
+                { img: "🔢", text: "130 + 20 = ...", spokenText: "one hundred thirty plus twenty equals?", isEnglish: true, options: [{ text: "one hundred fifty (150)", correct: true }, { text: "one hundred forty (140)", correct: false }, { text: "one hundred sixty (160)", correct: false }] },
+                { img: "➕", text: "140 + 10 = ...", spokenText: "one hundred forty plus ten equals?", isEnglish: true, options: [{ text: "one hundred fifty (150)", correct: true }, { text: "one hundred forty (140)", correct: false }, { text: "one hundred sixty (160)", correct: false }] },
+                { img: "🧮", text: "170 + 40 = ...", spokenText: "one hundred seventy plus forty equals?", isEnglish: true, options: [{ text: "two hundred ten (210)", correct: true }, { text: "two hundred (200)", correct: false }, { text: "two hundred twenty (220)", correct: false }] }
+            ]);
+        }
+
+        // --- 6. MENGENAL BENTUK & WARNA KREATIF (10+ Soal) ---
         function getBentukBank() {
             return shuffleArray([
                 { img: "🪙", text: "Koin uang logam dan roda sepeda berbentuk bangun datar...", options: [{text: "Lingkaran", correct: true}, {text: "Persegi", correct: false}, {text: "Segitiga", correct: false}] },
                 { img: "📦", text: "Kotak kado ulang tahun berbentuk kubus memiliki sisi sebanyak...", options: [{text: "6 sisi sama besar", correct: true}, {text: "3 sisi", correct: false}, {text: "5 sisi", correct: false}] },
                 { img: "🍕", text: "Potongan sepotong pizza atau atap rumah tradisional menyerupai bentuk...", options: [{text: "Segitiga", correct: true}, {text: "Persegi Panjang", correct: false}, {text: "Lingkaran", correct: false}] },
                 { img: "🪟", text: "Jendela kaca kamar tidur yang sisi-sisinya sama panjang berbentuk...", options: [{text: "Persegi", correct: true}, {text: "Lonjong", correct: false}, {text: "Trapesium", correct: false}] },
-                { img: "📺", text: "Layar televisi modern atau papan tulis di kelas umumnya berbentuk...", options: [{text: "Persegi Panjang", correct: true}, {text: "Segitiga", correct: false}, {text: "Lingkaran", correct: false}] }
+                { img: "📺", text: "Layar televisi modern atau papan tulis di kelas umumnya berbentuk...", options: [{text: "Persegi Panjang", correct: true}, {text: "Segitiga", correct: false}, {text: "Lingkaran", correct: false}] },
+                { img: "🥚", text: "Bentuk dari sebutir telur ayam atau buah semangka lonjong disebut...", options: [{text: "Oval / Lonjong", correct: true}, {text: "Kotak", correct: false}, {text: "Kubus", correct: false}] },
+                { img: "⚽", text: "Bola sepak, bola basket, dan kelereng memiliki bentuk ruang menyerupai...", options: [{text: "Bola / Sfera", correct: true}, {text: "Tabung", correct: false}, {text: "Kerucut", correct: false}] },
+                { img: "🥫", text: "Kaleng susu atau botol minuman tegak menyerupai bangun ruang bernama...", options: [{text: "Tabung", correct: true}, {text: "Balok", correct: false}, {text: "Kubus", correct: false}] },
+                { img: "🎩", text: "Topi ulang tahun berbentuk kerucut memiliki sudut puncak sebanyak...", options: [{text: "1 sudut puncak", correct: true}, {text: "4 sudut", correct: false}, {text: "Tidak ada", correct: false}] },
+                { img: "⭐", text: "Simbol yang biasa dipasang di puncak pohon natal atau lambang bintang bernilai lima disebut...", options: [{text: "Bintang", correct: true}, {text: "Kotak", correct: false}, {text: "Lingkaran", correct: false}] }
             ]);
         }
 
+        // --- 7. POLA URUTAN LOGIKA (10+ Soal) ---
         function getPolaBank() {
             return shuffleArray([
                 { img: "🟡 🟢 🟡 🟢", text: "Lanjutkan pola urutan warna kuning dan hijau berikutnya dengan benar.", options: [{text: "🟡", correct: true}, {text: "🟢", correct: false}, {text: "🔴", correct: false}] },
                 { img: "🍎 🍌 🍎 🍌", text: "Lanjutkan pola urutan buah apel dan pisang berikut.", options: [{text: "🍎", correct: true}, {text: "🍌", correct: false}, {text: "🍇", correct: false}] },
                 { img: "2, 4, 6, 8", text: "Lanjutkan deret hitung loncat dua berikut: 2, 4, 6, 8, ...", options: [{text: "10", correct: true}, {text: "9", correct: false}, {text: "12", correct: false}] },
-                { img: "⭐ ⭐ 🌙 ⭐ ⭐", text: "Lanjutkan pola urutan simbol bintang dan bulan sabit berikut.", options: [{text: "🌙", correct: true}, {text: "⭐", correct: false}, {text: "☀️", correct: false}] }
+                { img: "⭐ ⭐ 🌙 ⭐ ⭐", text: "Lanjutkan pola urutan simbol bintang dan bulan sabit berikut.", options: [{text: "🌙", correct: true}, {text: "⭐", correct: false}, {text: "☀️", correct: false}] },
+                { img: "🔴 🔵 🔴 🔵", text: "Lanjutkan pola warna merah dan biru berikutnya.", options: [{text: "🔴", correct: true}, {text: "🔵", correct: false}, {text: "🟢", correct: false}] },
+                { img: "5, 10, 15, 20", text: "Lanjutkan deret hitung loncat lima berikut: 5, 10, 15, 20, ...", options: [{text: "25", correct: true}, {text: "30", correct: false}, {text: "22", correct: false}] },
+                { img: "🐶 🐱 🐶 🐱", text: "Lanjutkan pola urutan hewan anjing dan kucing berikut.", options: [{text: "🐶", correct: true}, {text: "🐱", correct: false}, {text: "🐰", correct: false}] },
+                { img: "1, 3, 5, 7", text: "Lanjutkan deret bilangan ganjil berikut: 1, 3, 5, 7, ...", options: [{text: "9", correct: true}, {text: "8", correct: false}, {text: "10", correct: false}] },
+                { img: "🟩 🟦 🟩 🟦", text: "Lanjutkan pola kotak warna hijau dan biru berikut.", options: [{text: "🟩", correct: true}, {text: "🟦", correct: false}, {text: "🟥", correct: false}] },
+                { img: "10, 9, 8, 7", text: "Lanjutkan hitung mundur berikut: 10, 9, 8, 7, ...", options: [{text: "6", correct: true}, {text: "5", correct: false}, {text: "8", correct: false}] }
             ]);
         }
 
+        // --- 8. BESAR/KECIL & TINGGI/PENDEK (10+ Soal) ---
         function getKonsepBank() {
             return shuffleArray([
                 { img: "🐋", text: "Manakah hewan laut berikut yang ukuran tubuhnya paling besar di bumi?", options: [{text: "Paus Biru", correct: true}, {text: "Ikan Hias", correct: false}, {text: "Kepiting Kecil", correct: false}] },
                 { img: "🐞", text: "Hewan kecil bertotol merah apakah yang ukurannya sangat mini?", options: [{text: "Kumbang / Kepik", correct: true}, {text: "Kuda", correct: false}, {text: "Gajah", correct: false}] },
-                { img: "🦒", text: "Hewan sabana manakah yang memiliki ciri khas leher paling tinggi?", options: [{text: "Jerapah", correct: true}, {text: "Kelinci", correct: false}, {text: "Bebek", correct: false}] }
+                { img: "🦒", text: "Hewan sabana manakah yang memiliki ciri khas leher paling tinggi?", options: [{text: "Jerapah", correct: true}, {text: "Kelinci", correct: false}, {text: "Bebek", correct: false}] },
+                { img: "🐘", text: "Di antara gajah dan tikus, manakah hewan yang memiliki badan jauh lebih besar?", options: [{text: "Gajah", correct: true}, {text: "Tikus", correct: false}, {text: "Keduanya sama", correct: false}] },
+                { img: "🐜", text: "Hewan serangga apakah yang terkenal sangat kecil dan suka membawa gula?", options: [{text: "Semut", correct: true}, {text: "Kucing", correct: false}, {text: "Sapi", correct: false}] },
+                { img: "🌳", text: "Dibandingkan rumput halaman, pohon mangga besar memiliki ukuran yang...", options: [{text: "Jauh lebih tinggi dan besar", correct: true}, {text: "Lebih pendek", correct: false}, {text: "Sama saja", correct: false}] },
+                { img: "🐇", text: "Manakah hewan yang postur tubuhnya lebih pendek dibandingkan kuda?", options: [{text: "Kelinci", correct: true}, {text: "Jerapah", correct: false}, {text: "Sapi", correct: false}] },
+                { img: "🏔️", text: "Gunung tinggi yang puncaknya bersalju dibandingkan bukit kecil memiliki ukuran yang...", options: [{text: "Lebih tinggi & besar", correct: true}, {text: "Lebih pendek", correct: false}, {text: "Sangat tipis", correct: false}] },
+                { img: "🏠", text: "Di antara rumah tingkat dua dan tenda kecil, manakah bangunan yang ukurannya lebih besar?", options: [{text: "Rumah tingkat dua", correct: true}, {text: "Tenda kecil", correct: false}, {text: "Tidak ada", correct: false}] },
+                { img: "🍉", text: "Manakah buah yang ukurannya paling besar dibandingkan stroberi?", options: [{text: "Semangka", correct: true}, {text: "Stroberi", correct: false}, {text: "Anggur kecil", correct: false}] }
             ]);
         }
 
+        // --- 9. SENI & CAMPURAN WARNA (10+ Soal) ---
         function getMewarnaiBank() {
             return shuffleArray([
                 { img: "🎨", text: "Jika warna biru dicampur dengan warna merah, akan menghasilkan warna...", options: [{text: "Ungu", correct: true}, {text: "Hijau", correct: false}, {text: "Kuning", correct: false}] },
                 { img: "🎨", text: "Jika warna kuning dicampur dengan warna biru, akan menghasilkan warna...", options: [{text: "Hijau", correct: true}, {text: "Merah", correct: false}, {text: "Oranye", correct: false}] },
-                { img: "🎨", text: "Manakah yang merupakan kelompok warna primer (dasar) dalam seni lukis?", options: [{text: "Merah, Kuning, Biru", correct: true}, {text: "Pink, Ungu, Cokelat", correct: false}, {text: "Emas dan Perak", correct: false}] }
+                { img: "🎨", text: "Manakah yang merupakan kelompok warna primer (dasar) dalam seni lukis?", options: [{text: "Merah, Kuning, Biru", correct: true}, {text: "Pink, Ungu, Cokelat", correct: false}, {text: "Emas dan Perak", correct: false}] },
+                { img: "🎨", text: "Jika warna merah dicampur dengan warna kuning, akan menghasilkan warna...", options: [{text: "Oranye / Jingga", correct: true}, {text: "Ungu", correct: false}, {text: "Hijau", correct: false}] },
+                { img: "🎨", text: "Warna apakah yang melambangkan kebersihan dan kesucian seperti salju?", options: [{text: "Putih", correct: true}, {text: "Hitam", correct: false}, {text: "Merah", correct: false}] },
+                { img: "🎨", text: "Warna daun pohon yang sehat pada umumnya adalah...", options: [{text: "Hijau", correct: true}, {text: "Biru tua", correct: false}, {text: "Ungu", correct: false}] },
+                { img: "🎨", text: "Warna langit pada siang hari yang cerah tanpa awan adalah...", options: [{text: "Biru", correct: true}, {text: "Merah", correct: false}, {text: "Hijau", correct: false}] },
+                { img: "🎨", text: "Warna apakah yang identik dengan sinar matahari pagi?", options: [{text: "Kuning", correct: true}, {text: "Hitam", correct: false}, {text: "Ungu", correct: false}] },
+                { img: "🎨", text: "Warna buah stroberi matang dan darah pada umumnya adalah...", options: [{text: "Merah", correct: true}, {text: "Biru", correct: false}, {text: "Hijau", correct: false}] },
+                { img: "🎨", text: "Jika warna hitam dicampur ke dalam warna putih, warna apakah yang terbentuk?", options: [{text: "Abu-abu", correct: true}, {text: "Merah", correct: false}, {text: "Kuning", correct: false}] }
             ]);
         }
 
+        // --- 10. DUNIA HEWAN & KARAKTER SATWA (10+ Soal) ---
         function getHewanBank() {
             return shuffleArray([
                 { img: "🐧", text: "Hewan kutub unik bersayap yang tidak bisa terbang namun pandai berenang adalah...", options: [{text: "Pinguin", correct: true}, {text: "Elang", correct: false}, {text: "Merpati", correct: false}] },
                 { img: "🦋", text: "Serangga cantik bersayap warna-warni yang berasal dari metamorfosis ulat adalah...", options: [{text: "Kupu-kupu", correct: true}, {text: "Nyamuk", correct: false}, {text: "Lalat", correct: false}] },
-                { img: "🐯", text: "Hewan buas karnivora berkulit belang oren-hitam yang dijuluki harimau adalah...", options: [{text: "Harimau", correct: true}, {text: "Kelinci", correct: false}, {text: "Kambing", correct: false}] }
+                { img: "🐯", text: "Hewan buas karnivora berkulit belang oren-hitam yang dijuluki harimau adalah...", options: [{text: "Harimau", correct: true}, {text: "Kelinci", correct: false}, {text: "Kambing", correct: false}] },
+                { img: "🦁", text: "Hewan mamalia buas penguasa padang rumput yang memiliki surai tebal disebut...", options: [{text: "Singa", correct: true}, {text: "Kuda", correct: false}, {text: "Sapi", correct: false}] },
+                { img: "🐒", text: "Hewan lincah pemanjat pohon yang sangat menyukai buah pisang adalah...", options: [{text: "Monyet", correct: true}, {text: "Ikan", correct: false}, {text: "Bebek", correct: false}] },
+                { img: "🐘", text: "Hewan darat berbadan raksasa yang memiliki hidung panjang bernama belalai adalah...", options: [{text: "Gajah", correct: true}, {text: "Kucing", correct: false}, {text: "Kancil", correct: false}] },
+                { img: "🐸", text: "Hewan amfibi melompat yang hidup di air dan darat serta berbunyi 'korek-korek' adalah...", options: [{text: "Katak", correct: true}, {text: "Ayam", correct: false}, {text: "Burung", correct: false}] },
+                { img: "🐬", text: "Mamalia laut cerdas yang sangat bersahabat dengan manusia dan pandai melompat adalah...", options: [{text: "Lumba-lumba", correct: true}, {text: "Hiu", correct: false}, {text: "Buaya", correct: false}] },
+                { img: "🦉", text: "Burung malam bijak yang aktif mencari makan dalam gelap dan matanya bulat besar adalah...", options: [{text: "Burung Hantu", correct: true}, {text: "Ayam Jantan", correct: false}, {text: "Bebek", correct: false}] },
+                { img: "🐝", text: "Serangga kecil penghasil cairan manis madu lezat di sarangnya adalah...", options: [{text: "Lebah", correct: true}, {text: "Kecoa", correct: false}, {text: "Semut", correct: false}] }
             ]);
         }
 
+        // --- 11. TUMBUHAN & KEAJAIBAN ALAM (10+ Soal) ---
         function getTumbuhanBank() {
             return shuffleArray([
                 { img: "🌱", text: "Bagian tanaman yang tertanam di dalam tanah dan berfungsi menyerap air adalah...", options: [{text: "Akar", correct: true}, {text: "Daun", correct: false}, {text: "Bunga", correct: false}] },
-                { img: "🌿", text: "Bagian tanaman yang umumnya berwarna hijau dan berfungsi untuk bernapas adalah...", options: [{text: "Daun", correct: true}, {text: "Akar", correct: false}, {text: "Batang", correct: false}] }
+                { img: "🌿", text: "Bagian tanaman yang umumnya berwarna hijau dan berfungsi untuk bernapas adalah...", options: [{text: "Daun", correct: true}, {text: "Akar", correct: false}, {text: "Batang", correct: false}] },
+                { img: "🌳", text: "Bagian kokoh pada pohon yang berdiri tegak untuk menopang dahan dan daun disebut...", options: [{text: "Batang", correct: true}, {text: "Akar", correct: false}, {text: "Bunga", correct: false}] },
+                { img: "🌸", text: "Bagian tanaman yang berbau harum, berwarna indah, dan kelak berubah menjadi buah adalah...", options: [{text: "Bunga", correct: true}, {text: "Akar", correct: false}, {text: "Batang", correct: false}] },
+                { img: "🍎", text: "Bagian lezat dari tanaman buah yang dapat dimakan manusia dan mengandung biji di dalamnya adalah...", options: [{text: "Buah", correct: true}, {text: "Akar", correct: false}, {text: "Batang", correct: false}] },
+                { img: "💧", text: "Tanaman hijau di halaman rumah setiap hari perlu disiram dengan...", options: [{text: "Air", correct: true}, {text: "Minyak", correct: false}, {text: "Pasir", correct: false}] },
+                { img: "☀️", text: "Sumber cahaya dan panas utama di langit yang sangat dibutuhkan tumbuhan untuk tumbuh adalah...", options: [{text: "Matahari", correct: true}, {text: "Bulan", correct: false}, {text: "Bintang", correct: false}] },
+                { img: "🌻", text: "Bunga kuning cerah yang selalu menghadap ke arah datangnya sinar matahari disebut...", options: [{text: "Bunga Matahari", correct: true}, {text: "Bunga Mawar", correct: false}, {text: "Bunga Melati", correct: false}] },
+                { img: "🌵", text: "Tanaman unik tahan panas di gurun pasir yang batangnya berduri dan menyimpan air adalah...", options: [{text: "Kaktus", correct: true}, {text: "Pohon Pisang", correct: false}, {text: "Pohon Padi", correct: false}] },
+                { img: "🌾", text: "Tanaman biji-bijian di sawah yang menjadi sumber makanan pokok nasi bagi kita adalah...", options: [{text: "Padi", correct: true}, {text: "Rumput liar", correct: false}, {text: "Bambu", correct: false}] }
             ]);
         }
 
+        // --- 12. KOSAKATA BAHASA INGGRIS DASAR (10+ Soal) ---
         function getInggrisBank() {
             return shuffleArray([
                 { img: "🔵", text: "Apakah terjemahan bahasa Inggris dari warna biru?", options: [{text: "Blue", correct: true}, {text: "Red", correct: false}, {text: "Yellow", correct: false}] },
                 { img: "5️⃣", text: "Apakah bahasa Inggris dari angka lima?", options: [{text: "Five", correct: true}, {text: "Ten", correct: false}, {text: "One", correct: false}] },
-                { img: "🐶", text: "Apa arti kosakata bahasa Inggris 'dog' dalam bahasa Indonesia?", options: [{text: "Anjing", correct: true}, {text: "Kucing", correct: false}, {text: "Kelinci", correct: false}] }
+                { img: "🐶", text: "Apa arti kosakata bahasa Inggris 'dog' dalam bahasa Indonesia?", options: [{text: "Anjing", correct: true}, {text: "Kucing", correct: false}, {text: "Kelinci", correct: false}] },
+                { img: "🐱", text: "Apa terjemahan bahasa Inggris dari hewan kucing?", options: [{text: "Cat", correct: true}, {text: "Dog", correct: false}, {text: "Bird", correct: false}] },
+                { img: "🍎", text: "Apa arti kosakata bahasa Inggris 'apple' dalam bahasa Indonesia?", options: [{text: "Apel", correct: true}, {text: "Pisang", correct: false}, {text: "Jeruk", correct: false}] },
+                { img: "☀️", text: "Apa terjemahan bahasa Inggris dari matahari?", options: [{text: "Sun", correct: true}, {text: "Moon", correct: false}, {text: "Star", correct: false}] },
+                { img: "🔴", text: "Apakah bahasa Inggris dari warna merah?", options: [{text: "Red", correct: true}, {text: "Blue", correct: false}, {text: "Green", correct: false}] },
+                { img: "🌳", text: "Apa arti kosakata bahasa Inggris 'tree'?", options: [{text: "Pohon", correct: true}, {text: "Bunga", correct: false}, {text: "Rumput", correct: false}] },
+                { img: "🚗", text: "Apa terjemahan bahasa Inggris dari mobil?", options: [{text: "Car", correct: true}, {text: "Bike", correct: false}, {text: "Bus", correct: false}] },
+                { img: "🏫", text: "Apa arti kosakata bahasa Inggris 'school'?", options: [{text: "Sekolah", correct: true}, {text: "Rumah", correct: false}, {text: "Taman", correct: false}] }
             ]);
         }
 
